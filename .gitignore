@@ -1,0 +1,11 @@
+# 构建产物（assemble.py / extract.py 会重新生成）
+_parts/_check.js
+_parts/_enc.mjs
+_parts/*.json
+
+# 临时隧道工具，start-public.ps1 会按需重新下载
+_parts/cloudflared.exe
+
+# 测试时产生的图片，只有 dist 里的图标要保留
+*.png
+!dist/*.png

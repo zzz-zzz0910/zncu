@@ -1,0 +1,2198 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>小岛二维码 · 把一句话种成一座会扫码的小岛</title>
+<meta name="description" content="写下网址、WiFi、名片或一句话，在漂浮的方块小岛上放一棵树或一座城市地标，再让它落成一张能扫的二维码。纯前端生成，不联网也能用。">
+<meta name="theme-color" content="#e4eee8">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA2NCA2NCc+PHJlY3Qgd2lkdGg9JzY0JyBoZWlnaHQ9JzY0JyByeD0nMTQnIGZpbGw9JyNlZWY0ZWMnLz48ZyBmaWxsPScjNWY4ZjYyJz48cmVjdCB4PScyNicgeT0nNicgd2lkdGg9JzEyJyBoZWlnaHQ9JzYnLz48cmVjdCB4PScyMCcgeT0nMTInIHdpZHRoPScyNCcgaGVpZ2h0PSc2Jy8+PHJlY3QgeD0nMTQnIHk9JzE4JyB3aWR0aD0nMzYnIGhlaWdodD0nNicvPjxyZWN0IHg9JzgnIHk9JzI0JyB3aWR0aD0nNDgnIGhlaWdodD0nNicvPjxyZWN0IHg9JzE0JyB5PSczMCcgd2lkdGg9JzM2JyBoZWlnaHQ9JzYnLz48cmVjdCB4PScyMCcgeT0nMzYnIHdpZHRoPScyNCcgaGVpZ2h0PSc2Jy8+PC9nPjxyZWN0IHg9JzI5JyB5PSc0Micgd2lkdGg9JzYnIGhlaWdodD0nMTAnIGZpbGw9JyM4ZTY0NDcnLz48cmVjdCB4PScxNicgeT0nNTInIHdpZHRoPSczMicgaGVpZ2h0PSc2JyBmaWxsPScjYzhhMjdmJy8+PC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAACz0lEQVR42u3dMTIEURCA4X6vJtxoa8/gQFKJRKiKxCEkVAklEqkDOYMSyTkBdpnaed3zfRfYxa+rjS5aDOD94+0zSG+72bWl30MTMJUCbyKmUtxNxFSKuwmZSmF3MVPpYUATMpWmdRczlaZ1EzKVpnUXM5WmdRczlaLuYqZS1F3MVIq6i5lKUXcxUynqtraYrx9vVhXC3cVtrOmRXve9TyXdqkGl1aOLmUpRWzmov3KYzmSd0l3MVIraykHdlcN0JvuUNqFZz3NoSBu0dYMKa4cJjZUDhg7aukGVtaNlDHptJ6Dh9DT2PS21cmCHhmGDtj9TaY82obFygKBB0CBoBA2CBkGDoEHQCBqSa0vdcjgBDaenJjQIGkGDoEHQIGgQNIIGQYOgQdAgaAQNgoZIdj7qBJQY7PTUhMbKAYIGQYOgETQIGgQNggZBI2gQNAgaBA3hr48S/vooWDlA0CBoEDSCBkGDoEHQIGgEDYIGQYOgIRY/Hw2np+EE1IQGQSNoEDQIGgQNgkbQIGgQNAgaBI2gQdAQzkfD6Wms/QTUhAZBI2gQNAgaBA2CRtAgaBA0CBpBg6BB0BDOR8fwdHW2yOue3z/75JvQCBoEDYIGQYOgETQIGgQNggZBI2gQNAgaBA2CRtAgaBA0CBoEjaBB0CBoEDQImnpBbze75tNABdvNrpnQWDlA0HCsoO3RVNifTWisHJAiaGsH2dcNExorB6QJ2tpB5nXDhKb+ymFKk3U6fzuhRU3GmK0crOcphylNtun864QWNZlitnJQzl4TeLR/cP/68uArdwQnp5eppvPeE9rqQYaYD1o5RM3oMR+8Q4uakWP+0w+FombUmP/8lEPUjBjzvx7biZrRYo6ImOZ44dEe67G+kGf9xYppzSgNTXO/IdOaJYdhH/0NIuZFJrRpzQhDbzrWGxe3iI/xOtMSH5C4RZw+6J8+UIELeC5fXGv0Zb7EDiQAAAAASUVORK5CYII=">
+<meta property="og:type" content="website">
+<meta property="og:title" content="小岛二维码">
+<meta property="og:description" content="写下网址、WiFi、名片或一句话，在漂浮的方块小岛上放一棵树，再让它落成一张能扫的二维码。">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="og.png">
+<style>
+@property --sky1{syntax:'<color>';inherits:false;initial-value:#f8dde6}
+@property --sky2{syntax:'<color>';inherits:false;initial-value:#eef3e4}
+:root{color-scheme:light;--mist:#e4eee8;--cloud:#fbfcf8;--moss:#5f8f62;--moss-deep:#47724c;--bark:#4f4239;--bark-soft:#85776b;--line:#d3dfd5;--focus:#ef9f84;
+--font:"YouYuan","幼圆","Hiragino Maru Gothic ProN","Yuanti SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{min-height:100vh;background:var(--mist);color:var(--bark);font-family:var(--font);display:flex;justify-content:center;padding:28px 16px 36px}
+.wrap{width:100%;max-width:760px;display:flex;flex-direction:column;gap:18px}
+h1{margin:0;display:flex;flex-wrap:wrap;gap:7px;font-size:22px;font-weight:700;line-height:1}
+h1 span{display:grid;place-items:center;width:42px;height:42px;background:var(--cloud);border-radius:9px;box-shadow:0 4px 0 #c6d6c9}
+.lede{margin:14px 0 0;font-size:15px;line-height:1.75;color:var(--bark-soft);max-width:34em}
+@property --w1{syntax:'<color>';inherits:true;initial-value:#ffffff}
+@property --w2{syntax:'<color>';inherits:true;initial-value:#ffffff}
+@property --wo{syntax:'<number>';inherits:true;initial-value:0}
+@property --st{syntax:'<number>';inherits:true;initial-value:0}
+.stage{position:relative;height:min(66vh,600px);min-height:380px;border-radius:24px;overflow:hidden;background:linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 72%);transition:--sky1 .9s,--sky2 .9s,--w1 .9s,--w2 .9s,--wo .9s,--st 1.2s}
+.stage::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,var(--w1) 0%,var(--w2) 80%);opacity:var(--wo);pointer-events:none}
+.stage::after{content:'';position:absolute;inset:0 0 45% 0;opacity:var(--st);pointer-events:none;background-image:
+radial-gradient(circle at 8% 22%,#fff 0 1.4px,transparent 2px),radial-gradient(circle at 19% 9%,#fff 0 1px,transparent 1.6px),radial-gradient(circle at 31% 30%,#fff 0 1.2px,transparent 1.8px),
+radial-gradient(circle at 44% 12%,#fff 0 1.6px,transparent 2.2px),radial-gradient(circle at 57% 26%,#fff 0 1px,transparent 1.6px),radial-gradient(circle at 66% 7%,#fff 0 1.3px,transparent 1.9px),
+radial-gradient(circle at 78% 19%,#fff 0 1.1px,transparent 1.7px),radial-gradient(circle at 90% 11%,#fff 0 1.5px,transparent 2.1px),radial-gradient(circle at 94% 34%,#fff 0 1px,transparent 1.6px),
+radial-gradient(circle at 25% 45%,#fff 0 .9px,transparent 1.5px),radial-gradient(circle at 72% 40%,#fff 0 1px,transparent 1.6px),radial-gradient(circle at 51% 48%,#fff 0 .8px,transparent 1.4px)}
+@property --sun{syntax:'<number>';inherits:true;initial-value:1}
+@property --moon{syntax:'<number>';inherits:true;initial-value:0}
+.stage{--sun:1;--moon:0}
+.stage[data-weather="cloudy"]{--w1:#dfe4e9;--w2:#eef0f2;--wo:.55;--sun:.35}
+.stage[data-weather="rain"]{--w1:#b7c2cc;--w2:#dde2e6;--wo:.8;--sun:0}
+.stage[data-weather="snow"]{--w1:#dfe5ee;--w2:#f2f4f7;--wo:.6;--sun:.15}
+.stage[data-weather="night"]{--w1:#1e2847;--w2:#4a557c;--wo:1;--st:1;--sun:0;--moon:1}
+/* 方方的太阳和月亮，在画布后面 */
+.sky{position:absolute;inset:0;pointer-events:none;z-index:0}
+.sky::before,.sky::after{content:'';position:absolute;border-radius:7px;transition:opacity 1.2s}
+.sky::before{left:13%;top:9%;width:34px;height:34px;background:#fff4c8;opacity:var(--sun);box-shadow:0 0 0 9px rgba(255,236,170,.38),0 0 46px 22px rgba(255,232,160,.5)}
+.sky::after{right:15%;top:10%;width:26px;height:26px;background:#fbf3d6;opacity:var(--moon);box-shadow:inset -7px -5px 0 rgba(214,205,170,.55),0 0 0 7px rgba(251,243,214,.12),0 0 40px 16px rgba(220,226,255,.28)}
+.stage{transition:--sky1 .9s,--sky2 .9s,--w1 .9s,--w2 .9s,--wo .9s,--st 1.2s,--sun 1.2s,--moon 1.2s}
+.stage[data-weather="night"] .hint{color:rgba(255,255,255,.6)}
+.chip[data-w="night"][aria-checked="true"]{background:#4b5a86;box-shadow:0 3px 0 #36426a}
+.chip[data-w="rain"][aria-checked="true"]{background:#7d93a8;box-shadow:0 3px 0 #62788d}
+.stage[data-season="spring"]{--sky1:#f8dde6;--sky2:#eef3e4}
+.stage[data-season="summer"]{--sky1:#cde7ee;--sky2:#eaf3e2}
+.stage[data-season="autumn"]{--sky1:#f5e1c8;--sky2:#f3eee0}
+.stage[data-season="winter"]{--sky1:#dce5ef;--sky2:#f1f3f5}
+.stage canvas{position:relative;z-index:1;display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+.hint,.toggle{z-index:2}
+.stage canvas.dragging{cursor:grabbing}
+.stage[data-mode="qr"] canvas{cursor:default}
+.hint{position:absolute;left:18px;top:15px;margin:0;font-size:13px;color:rgba(79,66,57,.55);pointer-events:none}
+.toggle{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:grid;grid-template-columns:1fr 1fr;padding:4px;border-radius:15px;background:rgba(251,252,248,.92);box-shadow:0 4px 0 rgba(79,66,57,.12)}
+.toggle .thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:11px;background:var(--moss);box-shadow:0 3px 0 var(--moss-deep);transition:transform .5s cubic-bezier(.65,0,.25,1)}
+.stage[data-mode="qr"] .thumb{transform:translateX(100%)}
+.toggle button{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:9px 18px;border:0;border-radius:11px;background:none;font:inherit;font-size:15px;color:var(--bark-soft);cursor:pointer;transition:color .3s;white-space:nowrap}
+.toggle button[aria-pressed="true"]{color:#fff}
+.toggle svg{width:15px;height:15px;shape-rendering:crispEdges}
+.panel{display:flex;flex-direction:column;gap:14px}
+textarea{width:100%;min-height:58px;resize:vertical;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--cloud);color:var(--bark);font:inherit;font-size:16px;line-height:1.6}
+textarea:focus{outline:none;border-color:var(--moss)}
+textarea::placeholder{color:#a99d92}
+.pick{display:flex;align-items:center;gap:12px}
+.pick-label{flex:none;width:2.4em;font-size:14px;color:var(--bark-soft)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{height:38px;padding:0 13px;border:0;border-radius:10px;background:var(--cloud);color:var(--bark);font:inherit;font-size:14px;cursor:pointer;box-shadow:0 3px 0 #c9d7cb;transition:transform .08s,box-shadow .08s,background .2s,color .2s}
+.chip:active{transform:translateY(2px);box-shadow:0 1px 0 #c9d7cb}
+.chip[aria-checked="true"]{background:var(--moss);color:#fff;box-shadow:0 3px 0 var(--moss-deep)}
+.chip.sq{width:38px;padding:0;font-size:16px}
+.chip[data-s="spring"][aria-checked="true"]{background:#e391a9;box-shadow:0 3px 0 #c57690}
+.chip[data-s="autumn"][aria-checked="true"]{background:#d98a45;box-shadow:0 3px 0 #b96f31}
+.chip[data-s="winter"][aria-checked="true"]{background:#7f9cb8;box-shadow:0 3px 0 #64819c}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{background:var(--cloud);border-radius:14px;box-shadow:0 3px 0 #d3dfd5}
+.opt summary{list-style:none;display:flex;align-items:center;gap:12px;padding:13px 16px;cursor:pointer;font-size:14px;border-radius:14px}
+.opt summary::-webkit-details-marker{display:none}
+.opt summary::after{content:'';width:7px;height:7px;margin-right:4px;border-right:2px solid var(--bark-soft);border-bottom:2px solid var(--bark-soft);transform:translateY(-2px) rotate(45deg);transition:transform .25s}
+.opt[open] summary::after{transform:translateY(2px) rotate(225deg)}
+.opt-k{flex:none;width:2.6em;color:var(--bark-soft)}
+.opt-v{flex:1;color:var(--bark)}
+.opt-body{padding:0 16px 16px}
+.opt .chip:not([aria-checked="true"]){background:#eef3ec}
+.sub{margin:4px 0 8px;font-size:12px;color:var(--bark-soft)}
+.sub+.chips{margin-bottom:6px}
+.row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-top:4px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{padding:10px 16px;border:0;border-radius:12px;background:var(--cloud);color:var(--bark);font:inherit;font-size:14px;cursor:pointer;box-shadow:0 4px 0 #c9d7cb;transition:transform .08s,box-shadow .08s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #c9d7cb}
+.btn.primary{background:var(--moss);color:#fff;box-shadow:0 4px 0 var(--moss-deep)}
+.btn.primary:active{box-shadow:0 1px 0 var(--moss-deep)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.status{flex:1 1 220px;margin:0;font-size:13px;line-height:1.6;color:var(--bark-soft)}
+@media (max-width:520px){h1 span{width:36px;height:36px;font-size:19px}.stage{height:62vh;min-height:340px}.toggle button{padding:8px 14px}.chip{padding:0 10px}}
+/* ===== v2：内容类型、生成器字段、样式选项、识码与分享 ===== */
+.kinds{display:flex;flex-wrap:wrap;gap:7px}
+.kind{height:34px;padding:0 12px;border:0;border-radius:9px;background:var(--cloud);color:var(--bark-soft);font:inherit;font-size:13px;cursor:pointer;box-shadow:0 3px 0 #dbe4da;transition:transform .08s,box-shadow .08s,background .2s,color .2s}
+.kind:active{transform:translateY(2px);box-shadow:0 1px 0 #dbe4da}
+.kind[aria-checked="true"]{background:var(--moss);color:#fff;box-shadow:0 3px 0 var(--moss-deep)}
+.panel textarea[readonly]{background:#f3f8f2;color:var(--bark-soft);cursor:default}
+.fields{display:flex;flex-direction:column;gap:11px;padding:14px 16px;background:var(--cloud);border-radius:14px;box-shadow:0 3px 0 #d3dfd5}
+.fh{display:flex;flex-direction:column;gap:5px}
+.fh>label{font-size:12px;color:var(--bark-soft);padding-left:2px}
+.fh input[type=text],.fh select,.fh textarea{width:100%;padding:10px 12px;border:2px solid var(--line);border-radius:10px;background:#fff;color:var(--bark);font:inherit;font-size:15px;line-height:1.5}
+.fh input[type=text]:focus,.fh textarea:focus,.fh select:focus{outline:none;border-color:var(--moss)}
+.fh textarea{min-height:66px;resize:vertical}
+.fh select{appearance:none;padding-right:32px;background-image:linear-gradient(45deg,transparent 50%,var(--bark-soft) 50%),linear-gradient(135deg,var(--bark-soft) 50%,transparent 50%);background-position:calc(100% - 18px) calc(50% + 1px),calc(100% - 12px) calc(50% + 1px);background-size:6px 6px,6px 6px;background-repeat:no-repeat;cursor:pointer}
+.check{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--bark);cursor:pointer;padding:2px 0}
+.check input{width:18px;height:18px;accent-color:var(--moss);cursor:pointer}
+.mini{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.mini>.fh{flex:1 1 140px}
+.note{margin:0;font-size:12px;line-height:1.7;color:var(--bark-soft)}
+.note b{color:var(--bark);font-weight:600}
+.note code{padding:1px 5px;border-radius:5px;background:#eaf1e8;color:var(--moss-deep);font-size:11px;font-family:ui-monospace,Consolas,monospace;word-break:break-all}
+.sc-url{display:block;margin:9px 0 8px;padding:9px 11px;border-radius:9px;background:#eef3ec;
+  color:var(--moss-deep);font-size:11px;line-height:1.6;word-break:break-all;
+  font-family:ui-monospace,Consolas,'Courier New',monospace;-webkit-user-select:all;user-select:all}
+.drop{display:grid;place-items:center;gap:5px;min-height:94px;padding:16px;border:2px dashed var(--line);border-radius:13px;background:#f5f9f4;color:var(--bark-soft);font-size:13px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s}
+.drop:hover,.drop.over{border-color:var(--moss);background:#eef6ec}
+.drop strong{font-size:13px;color:var(--bark);font-weight:600}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,14px);z-index:99;max-width:min(88vw,420px);padding:11px 18px;border-radius:12px;background:rgba(79,66,57,.95);color:#fff;font-size:13px;line-height:1.55;opacity:0;pointer-events:none;transition:opacity .28s,transform .28s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.pill{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:6px;background:#e7f0e5;color:var(--moss-deep);font-size:11px;vertical-align:1px}
+@media (max-width:520px){.kind{height:32px;padding:0 10px;font-size:12px}.fields{padding:12px 13px}}
+
+/* ===== v3 布局：桌面左场景 + 右侧半透明收纳，手机上场景常驻，谁都不用往下滑 ===== */
+:root{--drawer:404px}
+.collapse-btn{display:none;position:fixed;top:50%;right:var(--drawer);transform:translateY(-50%);z-index:12;
+  width:26px;height:74px;padding:0;border:0;border-radius:11px 0 0 11px;align-items:center;justify-content:center;
+  background:rgba(251,252,248,.8);color:var(--bark-soft);font:inherit;font-size:16px;cursor:pointer;
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:-5px 0 20px rgba(0,0,0,.13);
+  transition:right .42s cubic-bezier(.4,0,.2,1),background .2s}
+.collapse-btn:hover{background:rgba(251,252,248,.97)}
+body.collapsed .collapse-btn{right:0}
+
+@media (min-width:900px){
+  body{padding:0;height:100vh;overflow:hidden;display:block;background:#0b1020}
+  .wrap{max-width:none;width:100%;height:100vh;display:grid;gap:0;
+    grid-template-columns:minmax(0,1fr) var(--drawer);
+    grid-template-rows:auto minmax(0,1fr);
+    grid-template-areas:"stage head" "stage panel";
+    transition:grid-template-columns .42s cubic-bezier(.4,0,.2,1)}
+  .stage{grid-area:stage;height:100vh;min-height:0;border-radius:0}
+  header{grid-area:head;min-width:0;padding:22px 22px 10px;
+    background:rgba(251,252,248,.74);
+    -webkit-backdrop-filter:blur(24px) saturate(1.35);backdrop-filter:blur(24px) saturate(1.35)}
+  .panel{grid-area:panel;min-width:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;padding:8px 22px 26px;
+    background:rgba(251,252,248,.74);
+    -webkit-backdrop-filter:blur(24px) saturate(1.35);backdrop-filter:blur(24px) saturate(1.35)}
+  h1{font-size:19px}
+  h1 span{width:36px;height:36px;font-size:19px}
+  .lede{font-size:13px;margin-top:11px;max-width:none;line-height:1.7}
+  body.collapsed .wrap{grid-template-columns:minmax(0,1fr) 0}
+  body.collapsed header,body.collapsed .panel{display:none}
+  .collapse-btn{display:flex}
+}
+
+@media (max-width:899px){
+  body{padding:0;height:100vh;height:100dvh;overflow:hidden;display:block}
+  .wrap{max-width:none;width:100%;height:100vh;height:100dvh;display:grid;gap:0;
+    grid-template-columns:minmax(0,1fr);
+    grid-template-rows:auto 46vh minmax(0,1fr);
+    grid-template-areas:"head" "stage" "panel"}
+  header{grid-area:head;min-width:0;padding:calc(12px + env(safe-area-inset-top,0px)) 16px 10px}
+  .stage{grid-area:stage;height:46vh;min-height:0;border-radius:0 0 24px 24px}
+  .panel{grid-area:panel;min-width:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;
+    padding:14px 16px calc(30px + env(safe-area-inset-bottom,0px))}
+  h1{font-size:17px;gap:5px}
+  h1 span{width:30px;height:30px;font-size:15px;border-radius:7px;box-shadow:0 3px 0 #c6d6c9}
+  .lede{display:none}
+  .kbd{display:none}
+}
+.kbd{margin:2px 0 0;font-size:11.5px;line-height:1.9;color:#a99d92}
+.kbd b{display:inline-block;min-width:1.1em;padding:1px 5px;border-radius:5px;background:#e7efe4;color:var(--moss-deep);font-weight:600}
+body.showcase .collapse-btn{display:none!important}
+
+/* ===== 拖图进页面时的提示 ===== */
+body.dragging-file::after{content:'松手就能读出这张二维码';position:fixed;inset:0;display:grid;place-items:center;z-index:300;background:rgba(79,66,57,.62);color:#fff;font-size:19px;letter-spacing:.06em;pointer-events:none}
+
+/* ===== 生成方式：只出二维码 / 出动画展示页 ===== */
+.outmode{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;background:#e8efe6;border-radius:14px}
+.outmode button{padding:12px 8px;border:0;border-radius:10px;background:none;color:var(--bark-soft);font:inherit;font-size:14px;cursor:pointer;transition:background .2s,color .2s,box-shadow .2s}
+.outmode button[aria-checked="true"]{background:var(--cloud);color:var(--bark);box-shadow:0 3px 0 #c9d7cb}
+.outmode button:active{transform:translateY(1px)}
+.outmode.sub{background:#eef3ec;padding:4px;gap:4px;border-radius:11px}
+.outmode.sub button{padding:9px 6px;font-size:12.5px;border-radius:8px}
+
+/* ===== 展示页：全屏，只有一座岛，点一下就变 ===== */
+body.showcase{padding:0;overflow:hidden;background:#0b1020;cursor:pointer}
+body.showcase .wrap{display:block;max-width:none;width:100%;height:100dvh;gap:0;grid-template-columns:none;grid-template-rows:none}
+body.showcase .stage{height:100vh;height:100dvh;width:100%;min-height:0;border-radius:0}
+body.showcase header,body.showcase .panel,body.showcase .toggle,body.showcase .hint{display:none!important}
+body.showcase .stage{height:100vh;height:100dvh;min-height:0;border-radius:0}
+.sc-wrap{position:fixed;inset:0;z-index:20;pointer-events:none;opacity:0;transition:opacity 1s ease}
+.sc-wrap.on{opacity:1}
+.sc-tip{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);pointer-events:none;opacity:1;
+  padding:8px 18px;border-radius:999px;background:rgba(40,32,28,.3);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  color:rgba(255,255,255,.92);font-size:13px;letter-spacing:.26em;white-space:nowrap;
+  transition:opacity 1.4s ease}
+.sc-tip.hide{opacity:0}
+/* 落定后浮出来的内容卡片：直接能读，底下挂一个小码给想存的人 */
+.sc-card{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);z-index:15;
+  width:min(86vw,420px);max-height:78vh;overflow-y:auto;overscroll-behavior:contain;
+  padding:30px 26px 20px;border-radius:24px;background:rgba(253,251,247,.97);
+  box-shadow:0 24px 70px rgba(0,0,0,.42);opacity:0;pointer-events:none;cursor:pointer;
+  transition:opacity .55s ease,transform .55s cubic-bezier(.2,.8,.3,1)}
+.sc-card.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.sc-card.poster{padding:14px;width:min(84vw,380px)}
+.sc-poster{display:block;width:100%;height:auto;border-radius:14px;background:#fff}
+.sc-lab{margin:0 0 10px;font-size:11.5px;letter-spacing:.3em;color:var(--bark-soft)}
+.sc-avatar{width:62px;height:62px;border-radius:50%;margin:0 0 16px;display:block;object-fit:cover;
+  background:linear-gradient(135deg,#25f4ee,#fe2c55);color:#fff;font-size:25px;font-weight:700;
+  line-height:62px;text-align:center;overflow:hidden}
+.sc-big{margin:0;font-size:29px;line-height:1.35;font-weight:600;color:var(--bark);word-break:break-word}
+.sc-text{margin:0;font-size:18px;line-height:1.8;color:var(--bark);white-space:pre-wrap;word-break:break-word}
+.sc-sub{margin:9px 0 0;font-size:13.5px;line-height:1.6;color:var(--bark-soft);word-break:break-all}
+.sc-mini{margin-top:22px;padding-top:16px;border-top:1px solid #e9e3d8;display:flex;align-items:center;gap:13px}
+.sc-mini img{width:74px;height:74px;border-radius:9px;display:block;flex:none;background:#fff}
+.sc-mini span{font-size:11.5px;letter-spacing:.14em;color:var(--bark-soft)}
+body.showcase .stage canvas{cursor:pointer;-webkit-tap-highlight-color:transparent}
+/* 卡片浮上来时把 3D 画面溶掉，只留天空渐变当背景 */
+body.showcase.qr-on .stage canvas{opacity:0;transition:opacity .6s ease}
+@media (max-width:520px){.sc-big{font-size:24px}.sc-text{font-size:16.5px}.sc-card{padding:26px 22px 18px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <h1 aria-label="小岛二维码"><span aria-hidden="true">小</span><span aria-hidden="true">岛</span><span aria-hidden="true">二</span><span aria-hidden="true">维</span><span aria-hidden="true">码</span></h1>
+    <p class="lede">写下一句话，在漂浮的方块小岛上放一棵树或一座城市地标。切到二维码，岛上的方块会落下来，拼成一张能扫的码。</p>
+  </header>
+  <section class="stage" id="stage" data-mode="tree" data-season="spring" data-weather="sunny">
+    <div class="sky" aria-hidden="true"></div>
+    <canvas id="gl" role="img" aria-label="一座漂浮小岛上的方块小树"></canvas>
+    <p class="hint" id="hint">拖动可以转一转</p>
+    <div class="toggle" id="toggle" role="group" aria-label="切换视角">
+      <span class="thumb" aria-hidden="true"></span>
+      <button type="button" id="toTree" aria-pressed="true"><svg viewBox="0 0 8 8" aria-hidden="true"><path fill="currentColor" d="M2 0H6V1H7V4H5V8H3V4H1V1H2Z"/></svg>小岛</button>
+      <button type="button" id="toQR" aria-pressed="false"><svg viewBox="0 0 8 8" aria-hidden="true"><path fill="currentColor" d="M0 0H3V3H0ZM5 0H8V3H5ZM0 5H3V8H0ZM4 4H5V5H4ZM6 5H8V6H6ZM5 6H6V8H5ZM7 7H8V8H7Z"/></svg>二维码</button>
+    </div>
+  </section>
+  <section class="panel">
+    <div class="kinds" id="kinds" role="radiogroup" aria-label="内容类型"></div>
+    <textarea id="text" rows="2" maxlength="300" placeholder="写下网址或一句话" aria-label="要变成二维码的内容">愿你今天也被温柔以待</textarea>
+    <div class="fields" id="fields" hidden></div>
+    <div class="opts">
+      <details class="opt" name="opt">
+        <summary><span class="opt-k">岛上</span><span class="opt-v" id="vShape"></span></summary>
+        <div class="opt-body">
+          <p class="sub" id="lbTree">树木</p><div class="chips" id="treeChips" role="radiogroup" aria-labelledby="lbTree"></div>
+          <p class="sub" id="lbLand">城市地标</p><div class="chips" id="landChips" role="radiogroup" aria-labelledby="lbLand"></div>
+        </div>
+      </details>
+      <details class="opt" name="opt">
+        <summary><span class="opt-k">季节</span><span class="opt-v" id="vSeason"></span></summary>
+        <div class="opt-body"><div class="chips" id="seasonChips" role="radiogroup" aria-label="季节"></div></div>
+      </details>
+      <details class="opt" name="opt">
+        <summary><span class="opt-k">天气</span><span class="opt-v" id="vWeather"></span></summary>
+        <div class="opt-body"><div class="chips" id="weatherChips" role="radiogroup" aria-label="天气"></div></div>
+      </details>
+      <details class="opt" name="opt">
+        <summary><span class="opt-k">样式</span><span class="opt-v" id="vStyle"></span></summary>
+        <div class="opt-body">
+          <p class="sub" id="lbEcc">纠错等级</p>
+          <div class="chips" id="eccChips" role="radiogroup" aria-labelledby="lbEcc"></div>
+          <p class="sub" id="lbHole">中心留白</p>
+          <div class="chips" id="holeChips" role="radiogroup" aria-labelledby="lbHole"></div>
+          <p class="note" id="eccNote">纠错越高越脏不坏，代价是同样内容的码会变大（格子更密）。想贴 logo 或做中心留白就用 Q 或 H。</p>
+          <div class="mini" style="margin-top:12px">
+            <div class="fh"><label for="exportSize">导出尺寸</label>
+              <select id="exportSize">
+                <option value="640">640 × 640</option>
+                <option value="1024" selected>1024 × 1024</option>
+                <option value="1536">1536 × 1536</option>
+                <option value="2048">2048 × 2048</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="opt" name="opt">
+        <summary><span class="opt-k">识码</span><span class="opt-v">读出别的二维码里写了什么</span></summary>
+        <div class="opt-body">
+          <label class="drop" id="drop" for="qrfile">
+            <strong>拖进来、Ctrl+V 粘贴，或点这里选一张截图</strong>
+            <span>支持 PNG / JPG，微信名片、收款码、别人做的码都能读</span>
+          </label>
+          <input type="file" id="qrfile" accept="image/*" hidden>
+          <p class="note" id="scanNote">读到的原始内容会直接填进上面的输入框，然后随手换成你自己的风格重画一遍。需要 Chrome 或 Edge（用到浏览器内置的识别引擎）。</p>
+        </div>
+      </details>
+    </div>
+    <div class="outmode" id="outMode" role="radiogroup" aria-label="生成方式"></div>
+    <p class="note" id="outNote"></p>
+    <div class="row">
+      <p class="status" id="status" aria-live="polite"></p>
+      <div class="actions">
+        <button class="btn" id="shareBtn" type="button">复制分享链接</button>
+        <button class="btn" id="saveView" type="button">保存当前画面</button>
+        <button class="btn primary" id="saveQR" type="button">下载二维码</button>
+      </div>
+      <p class="note kbd">键盘：<b>1</b><b>2</b><b>3</b><b>4</b> 季节 · <b>Q</b><b>W</b><b>E</b><b>R</b><b>T</b> 天气 · <b>A</b>–<b>K</b> 树种地标 · <b>空格</b> 切视角 · <b>P</b> 停/转 · <b>[</b> 收起面板</p>
+    </div>
+  </section>
+</main>
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* QR_ENC_BEGIN */
+/* ========== 二维码编码：数字 / 字母数字 / 字节 多段模式，L M Q H 四级纠错，中心可留白 ==========
+   结构参考 Nayuki 的 QR Code generator；ECC_CW / NUM_BLK 是标准容量表，顺序为 [L,M,Q,H][版本]。 */
+const ECC_ORDER = ['L','M','Q','H'];
+const ECC_FMT = { L:1, M:0, Q:3, H:2 };   // 格式信息里的 2 位纠错标识
+const ECC_CW = [
+  [-1,7,10,15,20,26,18,20,24,30,18,20,24,26,30,22,24,28,30,28,28,28,28,30,30,26,28,30,30,30,30,30,30,30,30,30,30,30,30,30,30],
+  [-1,10,16,26,18,24,16,18,22,22,26,30,22,22,24,24,28,28,26,26,26,26,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28],
+  [-1,13,22,18,26,18,24,18,22,20,24,28,26,24,20,30,24,28,28,26,30,28,30,30,30,30,28,30,30,30,30,30,30,30,30,30,30,30,30,30,30],
+  [-1,17,28,22,16,22,28,26,26,24,28,24,28,22,24,24,30,28,28,26,28,30,24,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30]];
+const NUM_BLK = [
+  [-1,1,1,1,1,1,2,2,2,2,4,4,4,4,4,6,6,6,6,7,8,8,9,9,10,12,12,12,13,14,15,16,17,18,19,19,20,21,22,24,25],
+  [-1,1,1,1,2,2,4,4,4,5,5,5,8,9,9,10,10,11,13,14,16,17,17,18,20,21,23,25,26,28,29,31,33,35,37,38,40,43,45,47,49],
+  [-1,1,1,2,2,4,4,6,6,8,8,8,10,12,16,12,17,16,18,21,20,23,23,25,27,29,34,34,35,38,40,43,45,48,51,53,56,59,62,65,68],
+  [-1,1,1,2,4,4,4,5,6,8,8,11,11,16,16,18,16,19,21,25,25,25,34,30,32,35,37,40,42,45,48,51,54,57,60,63,66,70,74,77,81]];
+const ALNUM = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:';
+const QR_ENC = new TextEncoder();
+function rawModules(v){ let r=(16*v+128)*v+64; if(v>=2){ const a=Math.floor(v/7)+2; r-=(25*a-10)*a-55; if(v>=7) r-=36; } return r; }
+function dataCodewords(v,e){ return Math.floor(rawModules(v)/8)-ECC_CW[e][v]*NUM_BLK[e][v]; }
+function gfMul(x,y){ let z=0; for(let i=7;i>=0;i--){ z=(z<<1)^((z>>>7)*0x11D); z^=((y>>>i)&1)*x; } return z; }
+function rsDivisor(d){ const r=new Array(d).fill(0); r[d-1]=1; let root=1; for(let i=0;i<d;i++){ for(let j=0;j<d;j++){ r[j]=gfMul(r[j],root); if(j+1<d) r[j]^=r[j+1]; } root=gfMul(root,2); } return r; }
+function rsRemainder(data,div){ const r=div.map(()=>0); for(const b of data){ const f=b^r.shift(); r.push(0); div.forEach((c,i)=>{ r[i]^=gfMul(c,f); }); } return r; }
+function alignPos(v,size){ if(v===1) return []; const n=Math.floor(v/7)+2; const step=Math.floor((v*8+n*3+5)/(n*4-4))*2; const r=[6]; for(let p=size-7;r.length<n;p-=step) r.splice(1,0,p); return r; }
+const qrLenBits = { num:[10,12,14], aln:[9,11,13], byte:[8,16,16] };
+const qrMaxSeg  = [{num:1023,aln:511,byte:255},{num:4095,aln:2047,byte:65535},{num:8191,aln:4095,byte:65535}];
+/* 分段规划：动态规划，在「4 位段头 + 长度位 + 数据位」的代价下找最省的分段方式。
+   纯数字内容用数字模式每字符 3.33bit，比字节模式的 8bit 省一半以上，版本能小好几级。 */
+function planSegments(cpb, cls){
+  const n=cpb.length, pre=[0]; for(let i=0;i<n;i++) pre.push(pre[i]+cpb[i].length);
+  const L=qrLenBits, M=qrMaxSeg[cls];
+  const isNum=new Uint8Array(n), isAln=new Uint8Array(n);
+  for(let i=0;i<n;i++){ const b=cpb[i]; isNum[i]=b.length===1&&b[0]>=48&&b[0]<=57; isAln[i]=b.length===1&&ALNUM.indexOf(String.fromCharCode(b[0]))>=0; }
+  const cost=new Float64Array(n+1); cost.fill(1e18); const prev=new Array(n+1).fill(null); cost[0]=0;
+  for(let i=0;i<n;i++){
+    const base=cost[i]; if(base>=1e17) continue;
+    for(let j=i+1;j<=n&&isNum[j-1];j++){ const k=j-i; if(k>M.num) break;
+      const c=base+4+L.num[cls]+Math.floor(k/3)*10+[0,4,7][k%3]; if(c<cost[j]){ cost[j]=c; prev[j]={i,m:'num'}; } }
+    for(let j=i+1;j<=n&&isAln[j-1];j++){ const k=j-i; if(k>M.aln) break;
+      const c=base+4+L.aln[cls]+Math.floor(k/2)*11+(k%2)*6; if(c<cost[j]){ cost[j]=c; prev[j]={i,m:'aln'}; } }
+    for(let j=i+1;j<=n;j++){ const nb=pre[j]-pre[i]; if(nb>M.byte) break;
+      const c=base+4+L.byte[cls]+8*nb; if(c<cost[j]){ cost[j]=c; prev[j]={i,m:'byte'}; } }
+  }
+  const segs=[]; let p=n; while(p>0&&prev[p]){ const s=prev[p]; segs.push({m:s.m,i:s.i,j:p}); p=s.i; }
+  segs.reverse();
+  return { bits:cost[n], segs, pre };
+}
+function encodeQR(text, eccKey, holeSize){
+  const ei = ECC_ORDER.indexOf(eccKey)>=0 ? ECC_ORDER.indexOf(eccKey) : 1;
+  const key = ECC_ORDER[ei], fmt = ECC_FMT[key];
+  const cpb = Array.from(text||'').map(ch => Array.from(QR_ENC.encode(ch)));
+  const plans = {}; const planFor = cls => plans[cls] || (plans[cls] = planSegments(cpb, cls));
+  let ver = 0, cap = 0, plan = null;
+  for(let v=1; v<=40; v++){
+    const cls = v<=9?0:v<=26?1:2, p = planFor(cls), c = dataCodewords(v,ei)*8;
+    if(p.bits <= c){ ver=v; cap=c; plan=p; break; }
+  }
+  if(!ver){ const e = new Error('too long'); e.tooLong = true; e.capBytes = dataCodewords(40,ei); throw e; }
+  const cls = ver<=9?0:ver<=26?1:2, L = qrLenBits;
+  const bits = []; const push = (v,n) => { for(let i=n-1;i>=0;i--) bits.push((v>>>i)&1); };
+  for(const s of plan.segs){
+    const k = s.j-s.i;
+    if(s.m==='num'){
+      push(1,4); push(k,L.num[cls]);
+      for(let t=s.i;t<s.j;){ const r=Math.min(3,s.j-t); let v=0; for(let u=0;u<r;u++) v = v*10 + (cpb[t+u][0]-48); push(v, r===3?10:r===2?7:4); t+=r; }
+    } else if(s.m==='aln'){
+      push(2,4); push(k,L.aln[cls]);
+      for(let t=s.i;t<s.j;){ if(s.j-t>=2){ push(ALNUM.indexOf(String.fromCharCode(cpb[t][0]))*45 + ALNUM.indexOf(String.fromCharCode(cpb[t+1][0])),11); t+=2; }
+        else { push(ALNUM.indexOf(String.fromCharCode(cpb[t][0])),6); t++; } }
+    } else {
+      push(4,4); push(plan.pre[s.j]-plan.pre[s.i], L.byte[cls]);
+      for(let t=s.i;t<s.j;t++) for(const b of cpb[t]) push(b,8);
+    }
+  }
+  push(0, Math.min(4, cap-bits.length)); push(0, (8-bits.length%8)%8);
+  for(let p=0xEC; bits.length<cap; p^=0xEC^0x11) push(p,8);
+  const data=[]; for(let i=0;i<bits.length;i+=8){ let b=0; for(let j=0;j<8;j++) b=(b<<1)|bits[i+j]; data.push(b); }
+  const nb=NUM_BLK[ei][ver], el=ECC_CW[ei][ver], raw=Math.floor(rawModules(ver)/8), nShort=nb-raw%nb, shortLen=Math.floor(raw/nb), div=rsDivisor(el);
+  const blocks=[];
+  for(let i=0,k=0;i<nb;i++){ const d=data.slice(k,k+shortLen-el+(i<nShort?0:1)); k+=d.length; const ec=rsRemainder(d,div); if(i<nShort) d.push(0); blocks.push(d.concat(ec)); }
+  const cw=[]; for(let i=0;i<blocks[0].length;i++) blocks.forEach((b,j)=>{ if(i!==shortLen-el||j>=nShort) cw.push(b[i]); });
+  const size=ver*4+17, mod=[], fn=[];
+  for(let y=0;y<size;y++){ mod.push(new Array(size).fill(false)); fn.push(new Array(size).fill(false)); }
+  const set=(x,y,d)=>{ mod[y][x]=d; fn[y][x]=true; };
+  for(let i=0;i<size;i++){ set(6,i,i%2===0); set(i,6,i%2===0); }
+  const finder=(cx,cy)=>{ for(let dy=-4;dy<=4;dy++) for(let dx=-4;dx<=4;dx++){ const d=Math.max(Math.abs(dx),Math.abs(dy)), x=cx+dx, y=cy+dy; if(x>=0&&x<size&&y>=0&&y<size) set(x,y,d!==2&&d!==4); } };
+  finder(3,3); finder(size-4,3); finder(3,size-4);
+  const ap=alignPos(ver,size), na=ap.length;
+  for(let i=0;i<na;i++) for(let j=0;j<na;j++){
+    if((i===0&&j===0)||(i===0&&j===na-1)||(i===na-1&&j===0)) continue;
+    for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++) set(ap[i]+dx,ap[j]+dy,Math.max(Math.abs(dx),Math.abs(dy))!==1);
+  }
+  const drawFormat=m=>{
+    const d=(fmt<<3)|m; let r=d; for(let i=0;i<10;i++) r=(r<<1)^((r>>>9)*0x537);
+    const b=((d<<10)|r)^0x5412, g=i=>((b>>>i)&1)!==0;
+    for(let i=0;i<=5;i++) set(8,i,g(i));
+    set(8,7,g(6)); set(8,8,g(7)); set(7,8,g(8));
+    for(let i=9;i<15;i++) set(14-i,8,g(i));
+    for(let i=0;i<8;i++) set(size-1-i,8,g(i));
+    for(let i=8;i<15;i++) set(8,size-15+i,g(i));
+    set(8,size-8,true);
+  };
+  drawFormat(0);
+  if(ver>=7){ let r=ver; for(let i=0;i<12;i++) r=(r<<1)^((r>>>11)*0x1F25); const b=(ver<<12)|r;
+    for(let i=0;i<18;i++){ const bit=((b>>>i)&1)!==0, a=size-11+i%3, c=Math.floor(i/3); set(a,c,bit); set(c,a,bit); } }
+  let bi=0;
+  for(let right=size-1;right>=1;right-=2){ if(right===6) right=5;
+    for(let vert=0;vert<size;vert++) for(let j=0;j<2;j++){ const x=right-j, up=((right+1)&2)===0, y=up?size-1-vert:vert;
+      if(!fn[y][x]&&bi<cw.length*8){ mod[y][x]=((cw[bi>>>3]>>>(7-(bi&7)))&1)!==0; bi++; } } }
+  const applyMask=m=>{ for(let y=0;y<size;y++) for(let x=0;x<size;x++){ if(fn[y][x]) continue; let v;
+    switch(m){ case 0:v=(x+y)%2===0;break; case 1:v=y%2===0;break; case 2:v=x%3===0;break; case 3:v=(x+y)%3===0;break;
+      case 4:v=(Math.floor(x/3)+Math.floor(y/2))%2===0;break; case 5:v=x*y%2+x*y%3===0;break; case 6:v=(x*y%2+x*y%3)%2===0;break; default:v=((x+y)%2+x*y%3)%2===0; }
+    if(v) mod[y][x]=!mod[y][x]; } };
+  const P1=[1,0,1,1,1,0,1,0,0,0,0], P2=[0,0,0,0,1,0,1,1,1,0,1];
+  const penalty=()=>{ let p=0;
+    for(let a=0;a<size;a++){ let rr=1, rc=1;
+      for(let b=1;b<=size;b++){
+        if(b<size&&mod[a][b]===mod[a][b-1]) rr++; else { if(rr>=5) p+=rr-2; rr=1; }
+        if(b<size&&mod[b][a]===mod[b-1][a]) rc++; else { if(rc>=5) p+=rc-2; rc=1; } } }
+    for(let y=0;y<size-1;y++) for(let x=0;x<size-1;x++){ const c=mod[y][x]; if(c===mod[y][x+1]&&c===mod[y+1][x]&&c===mod[y+1][x+1]) p+=3; }
+    for(let a=0;a<size;a++) for(let b=0;b<=size-11;b++){ let r1=1,r2=1,c1=1,c2=1;
+      for(let k=0;k<11;k++){ const h=mod[a][b+k]?1:0, v=mod[b+k][a]?1:0; if(h!==P1[k]) r1=0; if(h!==P2[k]) r2=0; if(v!==P1[k]) c1=0; if(v!==P2[k]) c2=0; }
+      p+=40*(r1+r2+c1+c2); }
+    let dk=0; for(const row of mod) for(const c of row) if(c) dk++;
+    const t=size*size; p+=Math.max(0,Math.ceil(Math.abs(dk*20-t*10)/t)-1)*10; return p; };
+  let best=0, bestP=Infinity;
+  for(let m=0;m<8;m++){ applyMask(m); drawFormat(m); const p=penalty(); if(p<bestP){ bestP=p; best=m; } applyMask(m); }
+  applyMask(best); drawFormat(best);
+  let hole=null; const hsIn=Math.max(0,Math.min(11, holeSize|0));
+  if(hsIn>0 && (key==='Q'||key==='H') && hsIn<size-9){
+    // 留白吃掉的是数据区，上限取码宽的 1/4：v1（21 格）最多 5 格，再大就补不回来了
+    let hs=Math.min(hsIn, Math.floor(size/4)); if(hs%2===0) hs--;
+    if(hs>=5){ const o=Math.floor((size-hs)/2); hole={x0:o,y0:o,s:hs}; }
+  }
+  return { size, mod, ver, ecc:key, hole };
+}
+/* QR_ENC_END */
+
+/* ========== 小工具 ========== */
+const HEXC={}; const hx=h=>HEXC[h]||(HEXC[h]=[parseInt(h.slice(1,3),16)/255,parseInt(h.slice(3,5),16)/255,parseInt(h.slice(5,7),16)/255]);
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+function hashStr(s){ let h=2166136261; for(const ch of s){ h^=ch.codePointAt(0); h=Math.imul(h,16777619); } return h>>>0; }
+function mulberry(a){ return ()=>{ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+
+/* ========== 季节与树种 ========== */
+const SEASONS={
+  spring:{ name:'春天', ink:['#5b3550','#613a56','#55304b'], grass:['#c4e5a4','#b6dd96','#cfeab0'], grassSide:'#9fcb86', dirt:['#d6b08c','#c8a27f','#ba9472','#ad8768'], water:'#a7d8e4',
+    flower:['#f6a9c0','#fff4f6','#f9d77a'], stem:'#8cc276', tuft:'#a9d68c', stone:['#e1ddd2','#cfcabd'], cap:'#ee8576', fx:'petal', particle:['#fbd3df','#f6bccd','#fff1f4'] },
+  summer:{ name:'夏天', ink:['#2c5535','#30593a','#284f31'], grass:['#a8d98c','#9ad07e','#b4df98'], grassSide:'#8cc276', dirt:['#d6b08c','#c8a27f','#ba9472','#ad8768'], water:'#8fcfe0',
+    flower:['#f9d45f','#ffffff','#9cc0f2'], stem:'#78b062', tuft:'#8ccb71', stone:['#e1ddd2','#cfcabd'], cap:'#ee8576', fx:'firefly', particle:['#fff3a6','#fbe68a'] },
+  autumn:{ name:'秋天', ink:['#6a3a1c','#713e1f','#62351a'], grass:['#dcd18e','#d1c47d','#e4d99c'], grassSide:'#c3b276', dirt:['#d6b08c','#c8a27f','#ba9472','#ad8768'], water:'#a3cbd3',
+    flower:['#ef9a4c','#e0773f','#f5c45a'], stem:'#b9a865', tuft:'#c9b76e', stone:['#ddd6c8','#cbc3b4'], cap:'#d9644f', fx:'leaf', particle:['#f2a14f','#e0773f','#f6c45a','#d65f3c'] },
+  winter:{ name:'冬天', ink:['#2e3f57','#33455e','#2a3a51'], grass:['#f6f9fc','#eef3f8','#e8eef5'], grassSide:'#dfe7ef', dirt:['#cdb19a','#bfa38c','#b1967f','#a48973'], water:'#d4e9f1',
+    flower:['#ffffff','#f3f6f9','#ffffff'], stem:'#e3e9ef', tuft:'#eef2f6', stone:['#f4f7fa','#d9dde2'], cap:'#f4f7fa', fx:'snow', particle:['#ffffff','#f4f8fc'] }
+};
+const SNOW='#f8fafc';
+// 二维码配色：深色格子沿对角线从 a 渐变到 b，三个定位角用 eye 色，底板带一点季节色。全部够深，保证能扫
+const QRPAL={
+  spring:{ a:'#7a3a5e', b:'#3d4c7c', eye:'#a23f66', board:'#fdf6f7' },
+  summer:{ a:'#1d6656', b:'#4a6620', eye:'#2b4f8c', board:'#f6faf0' },
+  autumn:{ a:'#8a3a1c', b:'#5b3868', eye:'#a8461d', board:'#fdf7ec' },
+  winter:{ a:'#2b4a7a', b:'#4b3a74', eye:'#1d5f70', board:'#f4f7fb' }
+};
+function qrInk(r,c,n,j){
+  const P=QRPAL[seasonKey];
+  if((r<7&&c<7)||(r<7&&c>=n-7)||(r>=n-7&&c<7)) return hx(P.eye);
+  const t=(r+c)/(2*(n-1)), A=hx(P.a), B=hx(P.b), k=[.93,1,1.06][j||0];
+  return [0,1,2].map(i=>Math.min(1,(A[i]+(B[i]-A[i])*t)*k));
+}
+const css=v=>`rgb(${v.map(x=>Math.round(x*255)).join(',')})`;
+function hsl(h,s,l){ h=((h%360)+360)%360; const c=(1-Math.abs(2*l-1))*s, x=c*(1-Math.abs((h/60)%2-1)), m=l-c/2;
+  const [r,g,b]=h<60?[c,x,0]:h<120?[x,c,0]:h<180?[0,c,x]:h<240?[0,x,c]:h<300?[x,0,c]:[c,0,x]; return [r+m,g+m,b+m]; }
+const TREES={
+  apple:{ name:'苹果树', bark:['#a77b58','#8e6447'], accentRate:.07, leaf:{ spring:['#c4e6a0','#b0da8c','#9ccd7b'], summer:['#93cd78','#80bf68','#6fb05b'], autumn:['#f4b75f','#ec9d4c','#e1873f'], winter:['#bdcdc3','#adc0b5','#9db3a8'] },
+    accent:{ spring:'#fde4ec', summer:'#ee7a69', autumn:'#d8543e', winter:'#e5675a' } },
+  pine:{ name:'松树', bark:['#9c7151','#835c41'], accentRate:.03, leaf:{ spring:['#8cc790','#79b77f','#68a76f'], summer:['#72b27c','#61a26d','#52925f'], autumn:['#86ad78','#769d6a','#678f5d'], winter:['#6a9a7c','#5c8b6e','#4f7d61'] },
+    accent:{ spring:'#b98a5e', summer:'#b98a5e', autumn:'#a8754b', winter:'#e5675a' } },
+  sakura:{ name:'樱花树', bark:['#b08878','#9a7364'], accentRate:.08, leaf:{ spring:['#fcd6e1','#f7c0d0','#f1aac0'], summer:['#a3d482','#90c671','#7eb862'], autumn:['#f3a66e','#ea8f5c','#de794e'], winter:['#d2cbd0','#c3bbc1','#b4acb2'] },
+    accent:{ spring:'#ef94b0', summer:'#b8dc94', autumn:'#f6c45a', winter:'#e9a3b5' } },
+  birch:{ name:'白桦', bark:['#f3f0e8','#e2ded3'], spot:'#5d544d', accentRate:0, leaf:{ spring:['#d9ee9e','#c8e489','#b6d877'], summer:['#aad681','#97ca70','#85bc61'], autumn:['#f9d86c','#f3c754','#e9b541'], winter:['#d6dacb','#c7ccbc','#b9beae'] },
+    accent:{ spring:'#f9e7a0', summer:'#f9e7a0', autumn:'#f9e7a0', winter:'#f9e7a0' } }
+};
+const LANDMARKS={ canton:{name:'广州塔'}, pearl:{name:'东方明珠'}, temple:{name:'天坛'}, pagoda:{name:'大雁塔'} };
+const shapeName=k=>(TREES[k]||LANDMARKS[k]).name;
+
+/* ========== 体素工具：在 0.5 的细网格上采样连续形状，只保留看得见的外壳 ========== */
+const VX=0.5;
+function hash3(x,y,z){ let h=Math.imul(x|0,374761393)^Math.imul(y|0,668265263)^Math.imul(z|0,1274126177); h=Math.imul(h^(h>>>13),1103515245); return ((h^(h>>>16))>>>0)/4294967296; }
+function noise3(x,y,z){ const xi=Math.floor(x), yi=Math.floor(y), zi=Math.floor(z), s=t=>t*t*(3-2*t), u=s(x-xi), v=s(y-yi), w=s(z-zi), H=(i,j,k)=>hash3(xi+i,yi+j,zi+k), L=(a,b,t)=>a+(b-a)*t;
+  return L(L(L(H(0,0,0),H(1,0,0),u),L(H(0,1,0),H(1,1,0),u),v),L(L(H(0,0,1),H(1,0,1),u),L(H(0,1,1),H(1,1,1),u),v),w); }
+function capsule(x,y,z,a,b,r0,r1){ // 两端半径不同的圆柱，用来做会变细的树干、树枝、斜腿
+  const bx=b[0]-a[0], by=b[1]-a[1], bz=b[2]-a[2], px=x-a[0], py=y-a[1], pz=z-a[2];
+  const t=Math.max(0,Math.min(1,(px*bx+py*by+pz*bz)/(bx*bx+by*by+bz*bz))), dx=px-bx*t, dy=py-by*t, dz=pz-bz*t;
+  return Math.sqrt(dx*dx+dy*dy+dz*dz)<=r0+(r1-r0)*t; }
+const inCaps=(x,y,z,list)=>list.some(c=>capsule(x,y,z,c[0],c[1],c[2],c[3]));
+// 树冠：几团球用平滑并集融在一起，边缘加噪声。返回相对所在球心的高度（决定叶色深浅），在外面返回 null
+function blobs(x,y,z,balls,flat,nz,seed){ let s=1e9, best=1e9, bi=0; const k=.9;
+  for(let i=0;i<balls.length;i++){ const b=balls[i], d=Math.hypot(x-b[0],(y-b[1])*flat,z-b[2])-b[3];
+    if(d<best){ best=d; bi=i; } const h=Math.max(k-Math.abs(d-s),0)/k; s=Math.min(d,s)-h*h*k*.25; }
+  if(s>(noise3(x*1.1+seed,y*1.1,z*1.1)-.5)*nz) return null;
+  const b=balls[bi]; return (y-b[1])/b[3]; }
+const leafV=(h,x,y,z)=>{ const s=h+(noise3(x*1.7,y*1.7,z*1.7)-.5)*.7; return s>.22?0:s>-.32?1:2; };
+const solidSq=(x,z)=>x>-.5&&x<0&&z>-.5&&z<0; // 正中间那一根 1 格粗的柱子
+const band=(y,step,w)=>((y%step)+step)%step<w;
+function voxelize(b,sample){
+  const V=new Map();
+  for(let i=Math.floor(b[0]/VX);i<Math.ceil(b[1]/VX);i++) for(let j=0;j<Math.ceil(b[2]/VX);j++) for(let k=Math.floor(b[3]/VX);k<Math.ceil(b[4]/VX);k++){
+    const x=(i+.5)*VX, y=(j+.5)*VX, z=(k+.5)*VX, r=sample(x,y,z);
+    if(r) V.set(i+','+j+','+k,{i,j,k,x,y,z,part:r[0],col:r[1],v:r[2]||0}); }
+  return V;
+}
+const ROOTS=(r)=>[[1.8,.5],[-1.6,1.2],[-.6,-1.9],[1.3,-1.5]].map(([x,z])=>[[0,.7,0],[x*r,0,z*r],.58*r,.2]);
+const SHAPES={
+  apple:{ b:[-7,7,15,-7,7], f(){ // 苹果树：粗短树干分出五根枝，十团叶子融成圆润的树冠
+    const caps=[[[0,0,0],[.15,4.8,.1],1,.62],[[.1,4.2,.1],[2.7,6.8,1.1],.5,.26],[[0,4.4,0],[-2.5,7.1,-1.2],.5,.26],[[0,4.8,0],[.7,7.6,-2.4],.42,.22],[[0,4.8,0],[-.5,8,2.2],.42,.22],[[.1,4.6,.1],[0,9,0],.5,.28],...ROOTS(1)];
+    const balls=[[0,9.6,0,3.1],[2.9,8.3,1.1,2.3],[-2.7,8.7,-1.2,2.4],[.7,8.1,-2.7,2.1],[-.6,8.5,2.5,2.1],[1.7,10.9,-.8,2],[-1.5,11.1,.6,2],[0,12,0,1.8],[2.4,10,1.9,1.7],[-2.3,10.2,-2,1.7]];
+    return (x,y,z)=>{ const h=blobs(x,y,z,balls,1.08,.55,3); if(h!==null) return ['leaf',null,leafV(h,x,y,z)]; return inCaps(x,y,z,caps)?['trunk']:null; }; } },
+  pine:{ b:[-6.5,6.5,18.5,-6.5,6.5], f(){ // 松树：六层边缘下垂的锥形枝叶，层层收小，顶上一个尖
+    const caps=[[[0,0,0],[0,15.6,0],.75,.18],...ROOTS(.8)];
+    return (x,y,z)=>{ const d=Math.hypot(x,z), n=noise3(x*1.4,y*1.4,z*1.4);
+      for(let t=0;t<6;t++){ const yb=2.2+t*2.25, h=3-t*.12, R=5.3-t*.78, ybe=yb-.8*Math.pow(Math.min(1,d/R),2), s=(y-ybe)/h;
+        if(s>=0&&s<=1&&d<=R*Math.pow(1-s,1.05)*(.88+n*.24)) return ['leaf',null,s>.55?0:s>.22?1:2]; }
+      if(y>=15.4&&y<=17.8&&d<=.8*(1-(y-15.4)/2.4)+.22) return ['leaf',null,0];
+      return inCaps(x,y,z,caps)?['trunk']:null; }; } },
+  sakura:{ b:[-9,9,14,-9,9], f(){ // 樱花树：微弯的粗树干撑开五根长枝，十二团扁平的花云
+    const caps=[[[0,0,0],[.7,2.8,.2],1.05,.78],[[.7,2.8,.2],[.3,4.7,-.2],.78,.62],
+      [[.3,4.5,-.2],[4.6,7.4,.6],.52,.26],[[.3,4.5,-.2],[-4.2,7.6,1.2],.52,.26],[[.3,4.6,-.2],[1.1,7.2,4.1],.45,.24],[[.3,4.6,-.2],[-.6,7.4,-4.1],.45,.24],[[.3,4.6,-.2],[.4,8.8,.2],.48,.3],
+      [[4.6,7.4,.6],[6.3,8.2,-.6],.26,.14],[[-4.2,7.6,1.2],[-5.9,8.4,2.7],.26,.14],[[1.1,7.2,4.1],[2.6,8,5.2],.24,.13],...ROOTS(1.1)];
+    const balls=[[5,8.7,.4,2.2],[6.4,9.1,-1,1.7],[-4.4,8.9,1.4,2.2],[-6,9.2,2.9,1.7],[1.3,8.5,4.3,2.1],[2.8,8.9,5.4,1.5],[-.6,8.7,-4.3,2.2],[.4,10.1,.2,2.6],[2.7,9.9,-2.3,1.9],[-2.5,10.1,-1.7,1.9],[-1.9,9.7,2.9,1.8],[2.9,9.7,2.7,1.8]];
+    return (x,y,z)=>{ const h=blobs(x,y,z,balls,1.35,.6,7); if(h!==null) return ['leaf',null,leafV(h,x,y,z)]; return inCaps(x,y,z,caps)?['trunk']:null; }; } },
+  birch:{ b:[-5,5,19,-5,5], f(){ // 白桦：细长的白树干带黑色横纹，小簇叶子沿着上半段错落分布，叶间透光
+    const caps=[[[0,0,0],[.2,15.5,.1],.52,.26],[[0,.5,0],[1.1,0,.3],.35,.15],[[0,.5,0],[-.9,0,-.7],.35,.15],
+      [[.1,6,0],[1.7,7.8,.8],.22,.12],[[.12,8,0],[-1.8,9.6,-.5],.22,.12],[[.13,9.6,0],[1.3,11,1.4],.2,.11],[[.15,11,0],[-1.1,12.2,-1.3],.2,.11],[[.17,12.4,0],[1.8,13.4,-.6],.18,.1]];
+    const balls=[[1.7,8.2,.9,1.45],[-1.9,9.7,-.5,1.55],[1.3,11.1,1.5,1.55],[-1.1,12.2,-1.3,1.55],[1.9,13.2,-.6,1.45],[-.6,13.9,1.2,1.55],[.2,15.3,0,1.7],[-1.4,14.9,-.9,1.3],[1.1,16.4,.4,1.25]];
+    return (x,y,z)=>{ const h=blobs(x,y,z,balls,1.1,.6,11); if(h!==null&&noise3(x*2.3+5,y*2.3,z*2.3)>.3) return ['leaf',null,leafV(h,x,y,z)];
+      if(!inCaps(x,y,z,caps)) return null;
+      const mark=y>1&&(noise3(x*3,y*1.6,z*3)>.68||band(y*1.4+noise3(x,y*.5,z)*.9,1,.1)); return [mark?'spot':'trunk']; }; } },
+  canton:{ b:[-4.5,4.5,40,-4.5,4.5], f(){ // 广州塔：双曲面镂空网筒，腰部收到最细再放开，顶上细长天线
+    const H=30;
+    return (x,y,z)=>{
+      if(y<.6) return Math.abs(x)<3.4&&Math.abs(z)<3.4?['stone',Math.max(Math.abs(x),Math.abs(z))>2.9?'#cfc8ba':'#ddd7cb']:null;
+      if(y<H){ const t=y/H, wa=.55, w=t<wa?Math.pow((wa-t)/wa,1.45):Math.pow((t-wa)/(1-wa),1.35);
+        const a=1.0+(t<wa?1.45:.62)*w, b=.84+(t<wa?1.0:.42)*w, th=t*2.6, c=Math.cos(th), s=Math.sin(th), u=x*c+z*s, v=-x*s+z*c, e=Math.hypot(u/a,v/b);
+        if(Math.hypot(u/.5,v/.62)<=1) return ['stone','#cfd4d9'];
+        if(y>H-1&&e<=1) return ['stone',e>.8?'#d9dde2':'#e6e9ec'];
+        if(e<=1&&e>=1-.58/Math.min(a,b)){ const ph=Math.atan2(v/b,u/a)/(Math.PI*2), column=((ph*16+t*4)%1+1)%1<.43, ring=band(y,2.0,.62);
+          if(column||ring) return ['glow','lattice',t]; }
+        return null; }
+      if(y<H+2.8) return Math.abs(x)<.5&&Math.abs(z)<.5?['stone','#e4e7ea']:null;
+      if(y<H+8.5) return solidSq(x,z)?['stone',band(y-H,1.6,.5)?'#f1f3f5':'#d5dade']:null;
+      if(y<H+9) return solidSq(x,z)?['glow','#ef6a5a']:null;
+      return null; }; } },
+  pearl:{ b:[-6,6,32.5,-6,6], f(){ // 东方明珠：三根直筒 + 三根斜撑托起下球，五颗小珠串到上球，再接太空舱和天线
+    const ang=[Math.PI/2,Math.PI*7/6,Math.PI*11/6], cols=ang.map(a=>[Math.cos(a)*1.35,Math.sin(a)*1.35]);
+    const legs=ang.map(a=>a+Math.PI/3).map(a=>[[Math.cos(a)*4.9,0,Math.sin(a)*4.9],[Math.cos(a)*1.7,5.2,Math.sin(a)*1.7],.45,.38]);
+    const small=[0,1,2,3,4].map(k=>{ const a=k/5*Math.PI*2+.3; return [Math.cos(a)*1.4,10.6+k*.75,Math.sin(a)*1.4,.6]; });
+    // 球面按纬度分成横向环带——真实那颗球就是一层层观景窗，比棋盘格干净得多
+    const sph=(x,y,z,cy,r)=>{
+      const dy=y-cy; if(Math.hypot(x,dy,z)>r) return null;
+      const lat=dy/r, band=Math.floor((lat*.5+.5)*9);
+      const col=(lat>.86||lat<-.86)?'#a92f5b':(band%2?'#cf3f73':'#e46b97');
+      return ['glow',col];
+    };
+    return (x,y,z)=>{ const r=Math.hypot(x,z);
+      if(y<.5) return r<5.8?['stone',r>4.8?'#cfc8ba':'#ddd7cb']:null;
+      const s=sph(x,y,z,6.6,2.7)||sph(x,y,z,17.2,2.0)||sph(x,y,z,22.4,.85); if(s) return s;
+      for(const b of small) if(Math.hypot(x-b[0],y-b[1],z-b[2])<=b[3]) return ['glow','#cf3f73'];
+      if(y<17.5) for(const c of cols) if(Math.hypot(x-c[0],z-c[1])<=.46) return ['stone','#e7e4de'];
+      if(r<=.42&&y<23) return ['stone','#e7e4de'];
+      if(inCaps(x,y,z,legs)) return ['stone','#cdc6ba'];
+      if(y>=23.2&&y<31.5&&(r<=.4-(y-23.2)*.033||solidSq(x,z))) return ['stone',band(y-23.2,1.6,.55)?'#f1f3f5':'#d5dade'];
+      if(y>=31.5&&y<32&&solidSq(x,z)) return ['glow','#ff8a6a'];
+      return null; }; } },
+  temple:{ b:[-6.5,6.5,12.5,-6.5,6.5], f(){ // 天坛祈年殿：三层汉白玉圆台，红墙金窗，三重檐蓝瓦攒尖顶，彩画檐带，鎏金宝顶
+    const paint=['#2f7d6d','#2f5fae','#d9a548'], blue=ab=>ab%3===0?'#3d72c0':'#2c5ba8';
+    const hall=(r,R,ab,y,y0,y1)=>r>R-.42&&ab%2===0&&y>y0+.25&&y<y1-.25?['glow','#e3ae4c']:['stone','#c43d34'];
+    return (x,y,z)=>{ const r=Math.hypot(x,z), ab=Math.floor((Math.atan2(z,x)/(Math.PI*2)+1)*24)%24;
+      // 台基：三层逐层收，边缘只留一道细收边，不做花纹，免得碎成石堆
+      for(const [y0,y1,R] of [[0,.72,5.2],[.72,1.44,4.5],[1.44,2.16,3.8]]){
+        if(y>=y0&&y<y1&&r<=R) return ['stone', r>R-.32?'#e4dfd1':'#f5f2ea'];
+      }
+      const along=Math.max(Math.abs(x),Math.abs(z)), across=Math.min(Math.abs(x),Math.abs(z));
+      if(across<.85&&along>=3.6&&along<=5.5&&y<2.16*(1-(along-3.6)/1.9)) return ['stone','#e8e3d6'];
+      if(y>=2.16&&y<3.6&&r<=2.35) return hall(r,2.35,ab,y,2.16,3.6);
+      if(y>=3.6&&y<4.05&&r<=2.55) return ['stone',paint[ab%3]];
+      if(y>=4.05&&y<4.95){ const R=3.45-(y-4.05)*1.25; if(r<=R) return ['stone',r>R-.45&&y<4.5?'#24498a':blue(ab)]; }
+      if(y>=4.95&&y<5.65&&r<=1.85) return hall(r,1.85,ab,y,4.95,5.65);
+      if(y>=5.65&&y<6.1&&r<=2.05) return ['stone',paint[ab%3]];
+      if(y>=6.1&&y<6.95){ const R=2.8-(y-6.1)*1.15; if(r<=R) return ['stone',r>R-.45&&y<6.55?'#24498a':blue(ab)]; }
+      if(y>=6.95&&y<7.6&&r<=1.35) return hall(r,1.35,ab,y,6.95,7.6);
+      if(y>=7.6&&y<8.05&&r<=1.55) return ['stone',paint[ab%3]];
+      if(y>=8.05&&y<9.7){ const R=2.25*(1-(y-8.05)/1.8)+.1; if(r<=R) return ['stone',r>R-.45&&y<8.5?'#24498a':blue(ab)]; }
+      if(y>=9.7&&y<10.6&&r<=.45) return ['glow','#e3b04b'];
+      if(y>=10.6&&y<11.1&&solidSq(x,z)) return ['glow','#f0c75a'];
+      return null; }; } },
+  pagoda:{ b:[-4.5,4.5,22.5,-4.5,5.5], f(){ // 大雁塔：高台基 + 南面台阶，七层逐层收分的砖塔，每层叠涩出檐、四面拱门，塔刹
+    const st=[]; let ys=1.5; for(let s=0;s<7;s++){ const hs=2.4-s*.12; st.push([ys,hs,2.75-s*.3]); ys+=hs; } const yt=ys;
+    return (x,y,z)=>{ const ax=Math.abs(x), az=Math.abs(z), m=Math.max(ax,az), n=Math.min(ax,az), I=Math.floor(x/VX), J=Math.floor(y/VX), K=Math.floor(z/VX);
+      if(y<1.5){ if(m<=3.6) return ['stone',m>3.1?'#c2a47e':((I+J+K)%2?'#cdb08a':'#c8aa84')];
+        if(ax<1&&z>=3.6&&z<=5.3&&y<1.5*(1-(z-3.6)/1.7)) return ['stone','#c2a47e']; return null; }
+      for(const [y0,hs,hw] of st){ if(y<y0||y>=y0+hs) continue;
+        if(y>=y0+hs-.5) return m<=hw+.5?['stone',m>hw?'#a9895d':'#b8996b']:null; // 叠涩出檐
+        if(m>hw) return null;
+        if(m>hw-.5&&n<.5&&(y-y0)<(hs-.5)*.62+(n<.25?.25:0)) return ['stone','#5e4636']; // 拱门
+        return ['stone',hash3(I,J,K)<.12?'#c9a978':(J%2?'#dcc08f':'#d3b583')]; }
+      if(y>=yt&&y<yt+.5&&m<=.75) return ['stone','#b8996b'];
+      if(y>=yt+.5&&y<yt+2.6&&(solidSq(x,z)||(y<yt+1.6&&m<=.5))) return ['glow','#c9a050'];
+      return null; }; } },
+};
+const TREE_CACHE={};
+function voxTree(kind){
+  if(TREE_CACHE[kind]) return TREE_CACHE[kind];
+  const S=SHAPES[kind], V=voxelize(S.b,S.f()), rand=mulberry(kind.length*977+kind.charCodeAt(0)), key=(i,j,k)=>i+','+j+','+k;
+  const has=(i,j,k)=>j<0||V.has(key(i,j,k));
+  let maxY=0, crownR=0, leafR=0;
+  for(const v of V.values()){ maxY=Math.max(maxY,v.y+VX/2); const r=Math.hypot(v.x,v.z); if(v.part==='leaf') leafR=Math.max(leafR,r); if(v.y>2) crownR=Math.max(crownR,r); }
+  const out=[], bottoms=[], rate=(TREES[kind]||{}).accentRate||0;
+  for(const v of V.values()){ const {i,j,k}=v;
+    if(has(i+1,j,k)&&has(i-1,j,k)&&has(i,j+1,k)&&has(i,j-1,k)&&has(i,j,k+1)&&has(i,j,k-1)) continue; // 看不见的内部方块不要
+    let part=v.part; if(part==='leaf'&&rand()<rate) part='accent';
+    out.push({x:v.x,y:v.y,z:v.z,part,col:v.col,v:part==='trunk'?(rand()<.35?1:0):v.v,top:!has(i,j+1,k),r:rand()});
+    if(v.part==='leaf'&&!has(i,j-1,k)&&v.y>2) bottoms.push([v.x,v.y,v.z]);
+  }
+  out.sort((a,b)=>b.y-a.y||a.r-b.r); // 从顶往下排，变二维码时顶上的先落下
+  return TREE_CACHE[kind]={ vox:out, bottoms, maxY, crownR:leafR||crownR };
+}
+
+/* ========== 漂浮小岛：0.5 细格的草地、倒锥形岩土（带石块和草皮垂边）、沙岸水塘、踏脚石小路和各种小摆设 ========== */
+function buildIsland(){
+  const R=8.6, pond={x:4.4,z:3.4,r:2}, Rr=a=>R+Math.sin(a*3+1)*.6+Math.sin(a*5+2)*.35, rand=mulberry(97);
+  const C=new Map(), key=(i,j,k)=>i+','+j+','+k, N=Math.ceil((R+1.2)/VX);
+  const path=[]; for(let t=0;t<=1;t+=.08) path.push([-6.6+t*4+Math.sin(t*5)*.6,5-t*3.1]);
+  const onPath=(x,z,r)=>path.some(p=>Math.hypot(x-p[0],z-p[1])<r);
+  for(let i=-N;i<N;i++) for(let k=-N;k<N;k++){
+    const x=(i+.5)*VX, z=(k+.5)*VX, d=Math.hypot(x,z), rr=Rr(Math.atan2(z,x)); if(d>rr) continue;
+    const pd=Math.hypot(x-pond.x,z-pond.z), water=pd<pond.r, sand=!water&&pd<pond.r+.55, stone=!water&&!sand&&onPath(x,z,.42);
+    const depth=.75+Math.pow(1-d/rr,.7)*6.4+(noise3(x*.45,3.3,z*.45)-.5)*1.6, L=Math.max(2,Math.ceil(depth/VX));
+    for(let j=0;j<L;j++){ const y=-(j+.5)*VX; let kind, v=0;
+      if(j===0){ if(water) kind='water'; else if(sand) kind='sand'; else if(stone) kind='path';
+        else { kind='grass'; const g=noise3(x*.32,1.7,z*.32)+(hash3(i,7,k)-.5)*.25; v=g<.42?2:g<.6?1:0; } }
+      else if(water&&j===1) kind='sand';
+      else if((j===1&&d>rr-.9)||(j===2&&d>rr-.5&&hash3(i,j,k)<.55)) kind='grassSide';
+      else { kind=hash3(i,j,k)<.05?'rock':'dirt'; v=y>-2?0:y>-3.5?1:2; }
+      C.set(key(i,j,k),{kind,x,y:kind==='water'?y-.2:y,z,v,d,i,j,k});
+    }
+  }
+  const tiles=[];
+  for(const c of C.values()){ const {i,j,k}=c;
+    if(j>0&&C.has(key(i+1,j,k))&&C.has(key(i-1,j,k))&&C.has(key(i,j+1,k))&&C.has(key(i,j-1,k))&&C.has(key(i,j,k+1))&&C.has(key(i,j,k-1))) continue;
+    tiles.push({kind:c.kind,x:c.x,y:c.y,z:c.z,s:[VX,VX,VX],v:c.v,d:c.d}); }
+  const decos=[], put=o=>decos.push(o);
+  const ok=(x,z)=>{ const d=Math.hypot(x,z); return d>2.6&&d<Rr(Math.atan2(z,x))-.5&&Math.hypot(x-pond.x,z-pond.z)>pond.r+.75&&!onPath(x,z,.65); };
+  for(let tries=0,nF=0;tries<1400&&decos.length<420;tries++){
+    const a=rand()*6.283, r=Math.sqrt(rand())*R, x=Math.cos(a)*r, z=Math.sin(a)*r; if(!ok(x,z)) continue; const t=rand();
+    if(t<.42&&nF<48){ nF++; const h=.26+rand()*.16, v=Math.floor(rand()*3);
+      put({kind:'stem',x,y:h/2,z,s:[.07,h,.07]}); put({kind:'flower',x,y:h+.05,z,s:[.22,.1,.22],v}); put({kind:'fcenter',x,y:h+.12,z,s:[.09,.04,.09]}); }
+    else if(t<.78){ for(let b=0;b<3;b++){ const bh=.22+rand()*.22; put({kind:'tuft',x:x+(rand()-.5)*.28,y:bh/2,z:z+(rand()-.5)*.28,s:[.07,bh,.07]}); } }
+    else if(t<.88){ put({kind:'stone',x,y:.12,z,s:[.5,.24,.4],v:0}); put({kind:'stone',x:x+.28,y:.08,z:z+.18,s:[.26,.16,.24],v:1}); }
+    else if(t<.95){ put({kind:'mstem',x,y:.12,z,s:[.14,.24,.14]}); put({kind:'cap',x,y:.31,z,s:[.42,.14,.42]}); put({kind:'dot',x:x+.08,y:.39,z:z-.06,s:[.08,.02,.08]}); }
+  }
+  for(let q=0;q<4;q++){ const a=q*1.7+.4, r=.6+q*.28; put({kind:'lily',x:pond.x+Math.cos(a)*r,y:-.18,z:pond.z+Math.sin(a)*r,s:[.42,.04,.42]}); } // 睡莲
+  put({kind:'wood',x:-6.3,y:.5,z:4.6,s:[.14,1,.14]}); put({kind:'board',x:-6.3,y:.86,z:4.6,s:[.75,.32,.08]}); // 小路口的木牌
+  for(const [lx,lz] of [[-5.2,-4.6],[6.4,-2.4]]){ // 两盏小灯笼，夜里会亮
+    put({kind:'post',x:lx,y:.55,z:lz,s:[.12,1.1,.12]}); put({kind:'lamp',x:lx,y:1.04,z:lz,s:[.3,.3,.3]}); put({kind:'lampcap',x:lx,y:1.23,z:lz,s:[.42,.08,.42]}); }
+  let Rmin=1e9; for(let i=0;i<360;i++) Rmin=Math.min(Rmin,Rr(i/360*Math.PI*2));
+  return { tiles, decos, R, pond, qrHalf:(Rmin-.75)/Math.SQRT2 }; // 二维码（含 4 格留白）完整落在草地以内
+}
+const ISLAND=buildIsland();
+/* ========== 场景：每个实例同时记着「在树上的位置」和「在二维码上的位置」 ==========
+   树上的方块和二维码的深色格子数量不同，按顺序成比例配对：多出来的一方从 0 长出来或缩没。 */
+let treeKey='sakura', seasonKey='spring';
+const FL=24; // 树位置3 码位置3 树尺寸3 码尺寸3 树顶色3 树侧色3 码顶色3 [延迟,弧高,生长]3
+function buildScene(qr,text,growMode){
+  const tree=voxTree(treeKey), n=qr.size, M=qr.mod, H=ISLAND.qrHalf, m=2*H/(n+8), h=(n-1)/2, rand=mulberry(hashStr(text)+7);
+  const hs=qr.hole, isHole=(r,c)=>!!hs&&r>=hs.y0&&r<hs.y0+hs.s&&c>=hs.x0&&c<hs.x0+hs.s;
+  const mods=[]; for(let r=0;r<n;r++) for(let c=0;c<n;c++) if(M[r][c]&&!isHole(r,c)) mods.push({r,c,x:(c-h)*m,z:(r-h)*m,d:Math.hypot(c-h,r-h)+rand()*1.5});
+  mods.sort((a,b)=>a.d-b.d);
+  const T=tree.vox.length, D=mods.length, N=Math.max(T,D), list=[];
+  for(let i=0;i<N;i++){
+    const ti=Math.floor(i*T/N), qi=Math.floor(i*D/N), v=tree.vox[ti], md=mods[qi];
+    const pT=i===0||Math.floor((i-1)*T/N)!==ti, pQ=i===0||Math.floor((i-1)*D/N)!==qi;
+    let g=-1; if((growMode==='all'||growMode==='tree')&&pT) g=.35+(v.y/tree.maxY)*1.1+rand()*.15; else if(growMode==='qr'&&pQ) g=rand()*.35;
+    list.push({kind:'tree',ref:v,tp:[v.x,v.y,v.z],qp:[md.x,m/2,md.z],ts:pT?[VX,VX,VX]:[0,0,0],qs:pQ?[m,m,m]:[0,0,0],delay:(i/N)*.8+rand()*.2,arc:v.part==='glow'?-7:1.2+rand()*2.2+(v.part==='leaf'||v.part==='accent'?10:0),grow:g,ink:Math.floor(rand()*3),qr:md,n});
+  }
+  const ga=growMode==='all';
+  const TILE_ARC={grass:-1,water:-4}, DECO_ARC={flower:-3,fcenter:-3,stem:-5,tuft:-5,lamp:-7};
+  for(const t of ISLAND.tiles) list.push({kind:t.kind,ref:t,tp:[t.x,t.y,t.z],qp:[t.x,t.y,t.z],ts:t.s,qs:t.s,delay:0,arc:TILE_ARC[t.kind]||0,grow:ga?t.d/ISLAND.R*.35:-1});
+  const fk=(x,z)=>Math.floor(x/VX)+','+Math.floor(z/VX), foot=new Set(); for(const v of tree.vox) if(v.y<1.6) foot.add(fk(v.x,v.z)); // 被底座、台阶盖住的地方不放摆设
+  for(const d of ISLAND.decos) if(!foot.has(fk(d.x,d.z))) list.push({kind:d.kind,ref:d,tp:[d.x,d.y,d.z],qp:[d.x,d.y,d.z],ts:d.s,qs:[0,0,0],delay:0,arc:DECO_ARC[d.kind]||0,grow:ga?.5+rand()*.4:-1});
+  return { list, n, m, H, tree };
+}
+function colorsOf(it){
+  const S=SEASONS[seasonKey], Tr=TREES[treeKey], win=seasonKey==='winter';
+  switch(it.kind){
+    case 'tree':{ const v=it.ref; let top, side;
+      if(v.col==='lattice'){ top=side=weatherKey==='night'?hsl(300-v.v*130,.72,.68):'#f1f4f6'; } // 广州塔网格：白天银白，夜里由粉紫渐变到青蓝
+      else if(v.col){ top=side=v.col; }
+      else if(v.part==='trunk'){ top=Tr.bark[0]; side=Tr.bark[1]; }
+      else if(v.part==='spot'){ top=side=Tr.spot; }
+      else if(v.part==='accent'){ top=side=Tr.accent[seasonKey]; }
+      else { top=side=Tr.leaf[seasonKey][v.v]; }
+      if(win&&v.top) top=SNOW;
+      return [top,side,qrInk(it.qr.r,it.qr.c,it.n,it.ink)]; }
+    case 'grass':{ const top=S.grass[it.ref.v]; return [top,S.grassSide,QRPAL[seasonKey].board]; } // 俯视时草地褪成浅色，当二维码的底
+    case 'water': return [S.water,S.water,QRPAL[seasonKey].board];
+    case 'dirt':{ const c=S.dirt[it.ref.v]; return [win?'#eef3f8':c,c,c]; }
+    case 'stem': return [S.stem,S.stem,S.stem];
+    case 'flower':{ const c=S.flower[it.ref.v]; return [c,c,c]; }
+    case 'tuft': return [S.tuft,S.tuft,S.tuft];
+    case 'stone':{ const c=S.stone[it.ref.v]; return [win?SNOW:c,c,c]; }
+    case 'mstem': return ['#f4ecdf','#e9dfcf','#f4ecdf'];
+    case 'cap': return [S.cap,win?'#ee8576':S.cap,S.cap];
+    case 'sand':{ const c=win?'#eef3f8':seasonKey==='autumn'?'#e2d3a6':'#ebe0b6'; return [c,'#dccf9f',QRPAL[seasonKey].board]; }
+    case 'path':{ const c=win?'#f1f4f7':'#e6e0d2'; return [c,'#cfc8b8',QRPAL[seasonKey].board]; }
+    case 'grassSide': return [S.grassSide,S.grassSide,S.grassSide];
+    case 'rock': return ['#aaa59b','#9d988e','#aaa59b'];
+    case 'fcenter': return win?['#ffffff','#ffffff','#ffffff']:['#f6d36b','#f6d36b','#f6d36b'];
+    case 'dot': return ['#ffffff','#ffffff','#ffffff'];
+    case 'lily': return win?['#e6eef3','#dbe4ea','#e6eef3']:['#7fbf6a','#6aa857','#7fbf6a'];
+    case 'wood': case 'board': return [win?SNOW:'#b98d5e','#a4794d','#b98d5e'];
+    case 'post': return ['#6d5a4c','#5e4d41','#6d5a4c'];
+    case 'lampcap': return [win?SNOW:'#5a4a3f','#4d3f36','#5a4a3f'];
+    case 'lamp': return ['#ffd27a','#ffc966','#ffd27a'];
+    default:{ const bd=QRPAL[seasonKey].board; return [bd,'#ece5d3',bd]; }
+  }
+}
+function packAll(list){ const a=new Float32Array(list.length*FL); list.forEach((it,i)=>{ const o=i*FL; a.set(it.tp,o); a.set(it.qp,o+3); a.set(it.ts,o+6); a.set(it.qs,o+9); a[o+21]=it.delay; a[o+22]=it.arc; a[o+23]=it.grow; }); return a; }
+function packColors(list){ const c=new Float32Array(list.length*9), C=v=>typeof v==='string'?hx(v):v;
+  list.forEach((it,i)=>{ const [t,s,q]=colorsOf(it); c.set(C(t),i*9); c.set(C(s),i*9+3); c.set(C(q),i*9+6); }); return c; }
+function applyColors(a,c,c0,t){ const N=c.length/9; for(let i=0;i<N;i++) for(let k=0;k<9;k++){ const v=c[i*9+k]; a[i*FL+12+k]=c0?c0[i*9+k]+(v-c0[i*9+k])*t:v; } }
+/* ========== WebGL：一个立方体，实例化画出所有方块；变形动画在着色器里算 ========== */
+const VCOMMON=`layout(location=0) in vec3 aPos; layout(location=1) in vec3 aNor;
+layout(location=2) in vec3 iTP; layout(location=3) in vec3 iQP; layout(location=4) in vec3 iTS; layout(location=5) in vec3 iQS;
+layout(location=6) in vec3 iTT; layout(location=7) in vec3 iTD; layout(location=8) in vec3 iQT; layout(location=9) in vec3 iMeta;
+uniform float uTime; uniform float uMorph; uniform float uClock; uniform float uWind; uniform float uWet;
+uniform vec3 uLx; uniform vec3 uLy; uniform vec3 uLv; uniform vec3 uLC; uniform float uLs;
+float io(float t){ return t<0.5?4.0*t*t*t:1.0-pow(-2.0*t+2.0,3.0)*0.5; }
+// iMeta.y 编码：>=10 树叶(弧高+10)  >=0 普通(弧高)  -1 草地  -2 萤火虫  -3 花朵  -4 水面  -5 草丛/花茎
+vec3 worldPos(out vec3 size, out float e, out float kind, out vec3 c){
+  float m=iMeta.y; kind=m>=9.5?1.0:(m>=-0.5?0.0:-floor(-m+0.5));
+  float arc=m>=9.5?m-10.0:max(m,0.0);
+  e=io(clamp(uMorph*1.45-iMeta.x*0.45,0.0,1.0)); // 每块的运动时间更长、彼此重叠更多，整体像一阵波浪
+  vec3 full=mix(iTS,iQS,e); size=full;
+  if(iMeta.z>=0.0){ float k=clamp((uTime-iMeta.z)/0.55,0.0,1.0)-1.0; size*=1.0+2.70158*k*k*k+1.70158*k*k; }
+  c=mix(iTP,iQP,e); c.y+=sin(3.14159*e)*arc;
+  vec3 w=c+aPos*size; w.y+=(size.y-full.y)*0.5;
+  float calm=1.0-e;
+  if(kind>0.5){ // 树叶随风摆：越高摆得越多，相邻方块用同一个风场，整团一起动
+    float h=clamp((c.y-4.0)/10.0,0.0,1.0)*uWind*calm;
+    w.x+=(sin(uClock*1.7+c.x*.35+c.y*.3)*.16+.06)*h; w.z+=cos(uClock*1.3+c.z*.35+c.y*.25)*.1*h; w.y+=sin(uClock*2.1+c.x*.5+c.z*.5)*.04*h;
+  } else if((kind<-2.5&&kind>-3.5)||(kind<-4.5&&kind>-5.5)){ // 花和草丛：越往上弯得越多
+    float b=clamp(w.y/0.6,0.0,1.0)*calm*(0.6+0.4*uWind);
+    w.x+=sin(uClock*2.3+c.x*.7+c.z*.4)*.09*b; w.z+=cos(uClock*1.9+c.z*.7)*.06*b;
+  } else if(kind<-3.5&&kind>-4.5){ w.y+=sin(uClock*1.8+c.x*1.1+c.z*.8)*.04*calm; }
+  return w;
+}
+vec3 lightClip(vec3 w){ vec3 d=w-uLC; return vec3(dot(d,uLx)*uLs, dot(d,uLy)*uLs, -dot(d,uLv)*0.03); }`;
+const VS=`#version 300 es
+${VCOMMON}
+uniform vec3 uRx; uniform vec3 uRu; uniform vec3 uV; uniform vec2 uProj; uniform vec2 uShift;
+out vec3 vBase; out vec3 vLocal; out vec3 vSize; out vec3 vLP; flat out vec3 vNor; flat out float vFlatF; flat out float vEmit; flat out float vShim; flat out vec2 vWS;
+void main(){
+  vec3 size; float e; float kind; vec3 c; vec3 w=worldPos(size,e,kind,c);
+  gl_Position=vec4(dot(w,uRx)*uProj.x+uShift.x, dot(w,uRu)*uProj.y+uShift.y, -dot(w,uV)*0.006, 1.0);
+  vLP=lightClip(w+aNor*0.06)*0.5+0.5;
+  vBase=aNor.y>0.5?mix(iTT,iQT,e):mix(iTD,iQT*0.8,e);
+  vFlatF=aNor.y>0.5?1.0:(aNor.y<-0.5?0.55:0.8+0.18*(dot(aNor,vec3(0.6,0.0,0.8))*0.5+0.5));
+  vLocal=aPos; vSize=size; vNor=aNor;
+  // 1=一直发光(萤火虫) 2=夜里发光(花、地标灯光) 3=云
+  vEmit=abs(kind+2.0)<0.5?1.0:((abs(kind+3.0)<0.5||abs(kind+7.0)<0.5)?2.0:(abs(kind+6.0)<0.5?3.0:0.0));
+  vShim=0.0; // 草地上一阵阵掠过的风、水面的粼光
+  if(aNor.y>0.5&&kind<-0.5&&kind>-1.5){ float s=sin(dot(c.xz,vec2(.6,.8))*.45-uClock*1.2)*.5+.5; vShim=s*s*s*s*.06*uWind*(1.0-e); }
+  if(aNor.y>0.5&&kind<-3.5&&kind>-4.5){ float s=sin(uClock*(2.2+uWet*3.0)+c.x*1.7-c.z*1.3)*.5+.5; vShim=s*s*s*(.14+uWet*.12)*(1.0-e); }
+  // x：下雨时变湿变深的程度（地面最明显）  y：能不能积雪（水面、发光体、云不积雪）
+  vWS=vec2(abs(kind+1.0)<0.5?1.0:0.45, (abs(kind+4.0)<0.5||abs(kind+2.0)<0.5||abs(kind+6.0)<0.5)?0.0:1.0);
+}`;
+const SVS=`#version 300 es
+${VCOMMON}
+void main(){ vec3 size; float e; float kind; vec3 c; vec3 w=worldPos(size,e,kind,c); gl_Position=vec4(lightClip(w),1.0); }`;
+const SFS=`#version 300 es
+precision mediump float;
+void main(){}`;
+const FS=`#version 300 es
+precision highp float; precision highp sampler2DShadow;
+in vec3 vBase; in vec3 vLocal; in vec3 vSize; in vec3 vLP; flat in vec3 vNor; flat in float vFlatF; flat in float vEmit; flat in float vShim; flat in vec2 vWS;
+uniform sampler2DShadow uShadow; uniform vec3 uL; uniform vec3 uSun; uniform vec3 uSky; uniform float uSnow; uniform float uWetF;
+uniform float uFlat; uniform float uEdge; uniform float uShOn; uniform float uGlow;
+out vec4 o;
+float shadowAt(){ // 3×3 PCF，让影子边缘软一点
+  if(vLP.x<=0.0||vLP.x>=1.0||vLP.y<=0.0||vLP.y>=1.0||vLP.z>=1.0) return 1.0;
+  float s=0.0; vec2 t=vec2(1.3/2048.0);
+  for(int i=-1;i<=1;i++) for(int j=-1;j<=1;j++) s+=texture(uShadow,vec3(vLP.xy+vec2(float(i),float(j))*t,vLP.z-0.0012));
+  return s/9.0;
+}
+void main(){
+  vec3 a=abs(vNor); vec2 p; vec2 s;
+  if(a.y>0.5){ p=vLocal.xz; s=vSize.xz; } else if(a.x>0.5){ p=vLocal.zy; s=vSize.zy; } else { p=vLocal.xy; s=vSize.xy; }
+  vec2 d=(0.5-abs(p))*s; float edge=(1.0-smoothstep(0.012,0.045,min(d.x,d.y)))*0.6;
+  float ndl=max(dot(vNor,uL),0.0);
+  float sh=ndl>0.0?mix(1.0,shadowAt(),uShOn):1.0;
+  float hemi=0.86+0.14*(vNor.y*0.5+0.5);
+  vec3 base=vBase;
+  if(vNor.y>0.5) base=mix(base,vec3(.96,.97,1.0),clamp(uSnow*vWS.y,0.0,1.0)*0.9); // 下雪时所有朝上的面慢慢积白
+  base*=1.0-uWetF*0.17*vWS.x; // 下雨时地面变深
+  vec3 lit=base*(uSky*hemi+uSun*ndl*sh)*(1.0+vShim);
+  if(vEmit>2.5) lit=mix(lit,vBase*(0.9+0.1*vNor.y),0.7); // 云：受光很少，保持蓬松的白
+  else if(vEmit>0.5){ float g=vEmit>1.5?uGlow:1.0; lit=mix(lit,vBase*1.18,g); }
+  vec3 c=mix(lit,vBase*vFlatF,uFlat); // 俯视二维码时回到不受光影影响的纯色
+  c*=1.0-edge*0.1*uEdge;
+  o=vec4(c,1.0);
+}`;
+let canvas=$('gl');
+const gl=canvas.getContext('webgl2',{antialias:true,alpha:true,premultipliedAlpha:true,preserveDrawingBuffer:true});
+let prog, sprog, U={}, SU={}, instBuf, partBuf, vaoMain, vaoPart, shadowTex, shadowFB; const SM=2048;
+function link(vs,fs){ const p=gl.createProgram(); gl.attachShader(p,shader(gl.VERTEX_SHADER,vs)); gl.attachShader(p,shader(gl.FRAGMENT_SHADER,fs)); gl.linkProgram(p);
+  if(!gl.getProgramParameter(p,gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p)); return p; }
+function shader(type,src){ const s=gl.createShader(type); gl.shaderSource(s,src); gl.compileShader(s); if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; }
+function makeVAO(cubeBuf,buf){
+  const vao=gl.createVertexArray(); gl.bindVertexArray(vao);
+  gl.bindBuffer(gl.ARRAY_BUFFER,cubeBuf);
+  gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,3,gl.FLOAT,false,24,0);
+  gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1,3,gl.FLOAT,false,24,12);
+  gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+  for(let loc=2;loc<=9;loc++){ gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc,3,gl.FLOAT,false,FL*4,(loc-2)*12); gl.vertexAttribDivisor(loc,1); }
+  gl.bindVertexArray(null); return vao;
+}
+function initGL(){
+  prog=link(VS,FS); sprog=link(SVS,SFS);
+  const common=['uTime','uMorph','uClock','uWind','uWet','uLx','uLy','uLv','uLC','uLs'];
+  for(const n of [...common,'uRx','uRu','uV','uProj','uShift','uShadow','uL','uSun','uSky','uFlat','uEdge','uShOn','uGlow','uSnow','uWetF']) U[n]=gl.getUniformLocation(prog,n);
+  for(const n of common) SU[n]=gl.getUniformLocation(sprog,n);
+  // 阳光的阴影贴图
+  shadowTex=gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D,shadowTex); gl.texStorage2D(gl.TEXTURE_2D,1,gl.DEPTH_COMPONENT24,SM,SM);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_COMPARE_MODE,gl.COMPARE_REF_TO_TEXTURE); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_COMPARE_FUNC,gl.LEQUAL);
+  shadowFB=gl.createFramebuffer(); gl.bindFramebuffer(gl.FRAMEBUFFER,shadowFB);
+  gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.DEPTH_ATTACHMENT,gl.TEXTURE_2D,shadowTex,0); gl.drawBuffers([gl.NONE]); gl.readBuffer(gl.NONE);
+  if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE) throw new Error('shadow framebuffer incomplete');
+  gl.bindFramebuffer(gl.FRAMEBUFFER,null);
+  const F=[[[1,0,0],[[.5,-.5,-.5],[.5,.5,-.5],[.5,.5,.5],[.5,-.5,.5]]],[[-1,0,0],[[-.5,-.5,.5],[-.5,.5,.5],[-.5,.5,-.5],[-.5,-.5,-.5]]],
+    [[0,1,0],[[-.5,.5,-.5],[-.5,.5,.5],[.5,.5,.5],[.5,.5,-.5]]],[[0,-1,0],[[-.5,-.5,.5],[-.5,-.5,-.5],[.5,-.5,-.5],[.5,-.5,.5]]],
+    [[0,0,1],[[.5,-.5,.5],[.5,.5,.5],[-.5,.5,.5],[-.5,-.5,.5]]],[[0,0,-1],[[-.5,-.5,-.5],[-.5,.5,-.5],[.5,.5,-.5],[.5,-.5,-.5]]]];
+  const v=[]; for(const [nr,q] of F) for(const i of [0,1,2,0,2,3]) v.push(...q[i],...nr);
+  const cubeBuf=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,cubeBuf); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(v),gl.STATIC_DRAW);
+  instBuf=gl.createBuffer(); partBuf=gl.createBuffer();
+  vaoMain=makeVAO(cubeBuf,instBuf); vaoPart=makeVAO(cubeBuf,partBuf);
+  gl.enable(gl.DEPTH_TEST); gl.clearColor(0,0,0,0);
+}
+let glOK=!!gl;
+if(glOK){ try{ initGL(); }catch(err){ console.error(err); glOK=false; } }
+if(!glOK){ const c2=document.createElement('canvas'); c2.id='gl'; c2.setAttribute('role','img'); canvas.replaceWith(c2); canvas=c2; }
+/* ========== 状态 ========== */
+const stage=$('stage'), hint=$('hint'), statusEl=$('status'), textEl=$('text');
+let scene=null, curQR=null, curText='', geom=null, colors=null, fade=null, count=0, particleTree='';
+let q=0, qv=0, qT=0, treeYaw=-0.65, treePitch=0.46, vel=0, dragging=false, grow=0, clock=0, last=performance.now();
+
+/* ========== 天气：光照、阴影强弱、风、云和降水 ========== */
+const cl=(a,r,h,s)=>({a,r,h,s});
+const WEATHERS={
+  sunny: { name:'晴天', sun:[.36,.33,.27], sky:[.74,.76,.81], sh:1,  wind:.8,  glow:0, L:[-.55,1,.5], fx:null,
+    cloud:'#ffffff', clouds:[cl(.4,12,19.5,.8),cl(2.6,13,21.5,.65),cl(4.5,11,20.5,.7)] },
+  cloudy:{ name:'多云', sun:[.24,.23,.21], sky:[.82,.84,.88], sh:.75, wind:1.2, glow:0, L:[-.55,1,.5], fx:null,
+    cloud:'#f6f7f9', clouds:[cl(.3,9,18,1.1),cl(1.4,11,20,1),cl(2.5,7,19,.9),cl(3.6,12,17,1.2),cl(4.7,8,21,1),cl(5.7,13,16,.8)] },
+  rain:  { name:'下雨', sun:[.10,.10,.11], sky:[.80,.83,.88], sh:.4, wind:1.8, glow:0, L:[-.35,1,.4], fx:'rain',
+    cloud:'#c3cbd4', clouds:[cl(.2,6,20,1.2),cl(1.1,10,21,1.1),cl(2.1,4,22,1),cl(3.2,9,19.5,1.25),cl(4.2,7,21.5,1.1),cl(5.2,11,20,1),cl(6,3,19,.9)] },
+  snow:  { name:'下雪', sun:[.18,.18,.20], sky:[.88,.90,.94], sh:.5, wind:.7,  glow:0, L:[-.45,1,.45], fx:'snow',
+    cloud:'#eef1f5', clouds:[cl(.5,8,20,1),cl(1.9,11,21,1.1),cl(3.3,6,19,.9),cl(4.7,10,20.5,1.05),cl(5.8,4,22,.9)] },
+  night: { name:'夜晚', sun:[.22,.27,.44], sky:[.36,.40,.56], sh:1,  wind:.5,  glow:1, L:[.6,1,.35], fx:'firefly',
+    cloud:'#c9d2ea', clouds:[cl(1,12,20,.7),cl(3.8,11,22,.6)] }
+};
+let weatherKey='sunny';
+const WCUR={ sun:[...WEATHERS.sunny.sun], sky:[...WEATHERS.sunny.sky], sh:1, wind:.8, glow:0, L:[...WEATHERS.sunny.L], snow:0, wet:0 };
+/* ========== 粒子：季节（花瓣/蝴蝶/落叶/小雪）+ 天气（雨/雪/萤火虫）+ 方块云 ========== */
+// 三种云的体素模板：几团球融在一起，底部切平，只留外壳
+const CLOUD_T=[1,2,3].map(seed=>{ const r=mulberry(seed*31), n=4+Math.floor(r()*3), balls=[];
+  for(let i=0;i<n;i++) balls.push([(i-(n-1)/2)*1.25+(r()-.5)*.5, r()*.5, (r()-.5)*1.2, .95+r()*.6]);
+  const cells=new Set(), K=(a,b,c)=>a+','+b+','+c, out=[];
+  for(let i=-12;i<12;i++) for(let j=-1;j<6;j++) for(let k=-6;k<6;k++){ const x=(i+.5)*VX, y=(j+.5)*VX, z=(k+.5)*VX;
+    let s=1e9; for(const b of balls) s=Math.min(s,Math.hypot(x-b[0],(y-b[1])*1.3,z-b[2])-b[3]); if(s<(noise3(x+seed*9,y,z)-.5)*.5) cells.add(K(i,j,k)); }
+  for(const c of cells){ const [i,j,k]=c.split(',').map(Number);
+    if(cells.has(K(i+1,j,k))&&cells.has(K(i-1,j,k))&&cells.has(K(i,j+1,k))&&cells.has(K(i,j-1,k))&&cells.has(K(i,j,k+1))&&cells.has(K(i,j,k-1))) continue;
+    out.push([(i+.5)*VX,(j+.5)*VX,(k+.5)*VX]); }
+  return out; });
+const CMAX=Math.max(...CLOUD_T.map(t=>t.length));
+const KS=60, KW=150, KC=7*CMAX, KT=KS+KW+KC, pdata=new Float32Array(KT*FL);
+const SFX={spring:'petal',summer:'butterfly',autumn:'leaf',winter:'flurry'}, FXN={petal:40,butterfly:9,leaf:60,flurry:30,rain:150,snow:150,firefly:30};
+const FXPAL={butterfly:['#f9d45f','#ffffff','#9cc0f2','#f6a9c0'],flurry:['#ffffff'],snow:['#ffffff','#f4f8fc'],rain:['#d3e3ef','#c4d8e8'],firefly:['#fff3a6','#fbe68a']};
+let sParts=[], wParts=[], cloudT=0, partReady=false;
+function spawn(p,type,scatter){
+  const tr=scene.tree, rnd=Math.random, R=ISLAND.R-1;
+  p.type=type; p.ph=rnd()*6.283; p.rest=0; p.c=Math.floor(rnd()*4);
+  if(type==='petal'||type==='leaf'){
+    let b=tr.bottoms[Math.floor(rnd()*tr.bottoms.length)];
+    if(!b){ const a=rnd()*6.283, r=Math.sqrt(rnd())*9; b=[Math.cos(a)*r,14+rnd()*6,Math.sin(a)*r]; } // 地标没有树冠：花瓣/落叶从空中飘下
+    p.x=b[0]+(rnd()-.5)*.6; p.z=b[2]+(rnd()-.5)*.6; p.y=scatter?rnd()*b[1]:b[1]-.1; p.vy=.45+rnd()*.45;
+    const wide=rnd()<.5; p.sx=wide?.32:.22; p.sz=wide?.22:.32; p.sy=.07; p.hold=type==='leaf'?9+rnd()*9:5+rnd()*4;
+    if(scatter&&rnd()<.45){ const a=rnd()*6.283, r=1.5+rnd()*(R-1.5); p.x=Math.cos(a)*r; p.z=Math.sin(a)*r; p.y=groundY(p.x,p.z)+p.sy/2; p.rest=rnd()*p.hold; }
+  } else if(type==='flurry'||type==='snow'){
+    const a=rnd()*6.283, r=Math.sqrt(rnd())*13; p.x=Math.cos(a)*r; p.z=Math.sin(a)*r; p.y=scatter?rnd()*24:22+rnd()*4;
+    p.vy=1+rnd()*.9; p.sx=p.sy=p.sz=.14+rnd()*.1; p.hold=type==='snow'?2.5:1.5;
+  } else if(type==='rain'){
+    const a=rnd()*6.283, r=Math.sqrt(rnd())*12; p.x=Math.cos(a)*r; p.z=Math.sin(a)*r; p.y=scatter?rnd()*24:20+rnd()*6;
+    p.vy=13+rnd()*4; p.sx=p.sz=.05; p.sy=.7; p.hold=.18;
+  } else { // 蝴蝶、萤火虫：在一个点附近绕圈
+    const ff=type==='firefly', a=rnd()*6.283, r=ff?3+rnd()*7:2.5+rnd()*5.5;
+    p.bx=Math.cos(a)*r; p.bz=Math.sin(a)*r; p.by=ff?1.5+rnd()*tr.maxY*.8:.8+rnd()*3;
+    p.max=ff?3+rnd()*4:6+rnd()*5; p.life=scatter?rnd()*p.max:p.max; p.f1=.3+rnd()*.4; p.f2=.5+rnd()*.5;
+  }
+}
+function groundY(x,z){ const pd=ISLAND.pond; return Math.hypot(x-pd.x,z-pd.z)<pd.r?-.2:0; }
+function initSeasonFX(){ particleTree=treeKey; sParts=[]; if(reduced) return; const t=SFX[seasonKey]; for(let i=0;i<FXN[t];i++){ const p={}; spawn(p,t,true); sParts.push(p); } }
+function initWeatherFX(){ wParts=[]; cloudT=0; const t=WEATHERS[weatherKey].fx; if(reduced||!t) return; for(let i=0;i<FXN[t];i++){ const p={}; spawn(p,t,true); wParts.push(p); } }
+function initParticles(){ initSeasonFX(); initWeatherFX(); }
+// 返回 [x,y,z,sx,sy,sz,可见度]
+function stepP(p,dt,wind){
+  const t=p.type;
+  if(t==='firefly'||t==='butterfly'){
+    p.life-=dt; if(p.life<=0) spawn(p,t,false);
+    const sp=t==='butterfly'?1.8:1, x=p.bx+Math.sin(clock*p.f1*sp+p.ph)*1.6, y=p.by+Math.sin(clock*p.f2*sp+p.ph*2)*.6, z=p.bz+Math.cos(clock*p.f1*.8*sp+p.ph)*1.6;
+    const f=Math.max(0,Math.min(1,p.life/.8,(p.max-p.life)/.8));
+    if(t==='firefly') return [x,y,z,.17,.17,.17,f*(.6+.4*Math.sin(clock*5+p.ph))];
+    const flap=.3+.7*Math.abs(Math.sin(clock*14+p.ph)); return [x,y,z,.34*flap,.05,.22,f];
+  }
+  if(p.rest>0){ // 落地后停一会儿，再慢慢消失
+    p.rest-=dt; const f=Math.min(1,Math.max(0,p.rest)); if(p.rest<=0) spawn(p,t,false);
+    if(t==='rain') return [p.x,.02,p.z,.28,.03,.28,1];
+    return [p.x,p.y,p.z,p.sx,p.sy,p.sz,f];
+  }
+  p.y-=p.vy*dt;
+  const sway=t==='rain'?0:(t==='leaf'||t==='petal'?.5:.25);
+  p.x+=(Math.sin(clock*1.5+p.ph)*sway+wind*(t==='rain'?.5:.6))*dt; p.z+=Math.cos(clock*1.2+p.ph)*sway*.7*dt;
+  const gy=groundY(p.x,p.z);
+  if(Math.hypot(p.x,p.z)<ISLAND.R-.4&&p.y<=gy+p.sy/2){ p.y=gy+p.sy/2; p.rest=p.hold; }
+  else if(p.y<-7) spawn(p,t,false);
+  return [p.x,p.y,p.z,p.sx,p.sy,p.sz,1];
+}
+function writeBox(o,x,y,z,sx,sy,sz,top,side,meta=0){
+  pdata[o]=pdata[o+3]=x; pdata[o+1]=pdata[o+4]=y; pdata[o+2]=pdata[o+5]=z;
+  pdata[o+6]=pdata[o+9]=sx; pdata[o+7]=pdata[o+10]=sy; pdata[o+8]=pdata[o+11]=sz;
+  pdata.set(top,o+12); pdata.set(side,o+15); pdata.set(top,o+18); pdata[o+21]=0; pdata[o+22]=meta; pdata[o+23]=-1;
+}
+function updateFX(dt,vis){
+  const W=WEATHERS[weatherKey], wind=W.wind*.6, pv=vis*Math.min(1,Math.max(0,clock-1.6)), white=hx('#ffffff');
+  const cloudLift=scene?Math.max(0,(scene.tree.maxY-16)*0.9):0;
+  const group=(arr,off,cap)=>{ for(let i=0;i<cap;i++){ const o=(off+i)*FL, p=arr[i];
+    if(!p){ writeBox(o,0,-50,0,0,0,0,white,white); continue; }
+    const r=stepP(p,dt,wind), pal=FXPAL[p.type]||SEASONS[seasonKey].particle, col=hx(pal[p.c%pal.length]), k=r[6]*pv;
+    writeBox(o,r[0],r[1],r[2],r[3]*k,r[4]*k,r[5]*k,col,col,p.type==='firefly'?-2:0); } };
+  group(sParts,0,KS); group(wParts,KS,KW);
+  cloudT+=dt; const ct=hx(W.cloud), cv=vis*Math.min(1,clock*.8)*Math.min(1,cloudT/1.2);
+  for(let j=0;j<7;j++){ const c=W.clouds[j], tpl=CLOUD_T[j%3];
+    if(!c){ for(let k=0;k<CMAX;k++) writeBox((KS+KW+j*CMAX+k)*FL,0,-50,0,0,0,0,ct,ct); continue; }
+    // 云顺着风飘过小岛，飘出一侧后从另一侧回来，两端缩小淡出
+    const u=((c.a/6.283*44+clock*(reduced?0:.45+WCUR.wind*.35))%44+44)%44-22, lat=Math.sin(c.a*2.3)*c.r*.8;
+    const cx=u*.96-lat*.28, cz=u*.28+lat*.96, cy=c.h+cloudLift+Math.sin(clock*.5+c.a)*.3;
+    const s=VX*c.s*cv*Math.min(1,Math.max(0,(22-Math.abs(u))/5));
+    for(let k=0;k<CMAX;k++){ const o=(KS+KW+j*CMAX+k)*FL, p=tpl[k];
+      if(!p){ writeBox(o,0,-50,0,0,0,0,ct,ct); continue; }
+      writeBox(o,cx+p[0]*c.s,cy+p[1]*c.s,cz+p[2]*c.s,s,s,s,ct,ct,-6); } }
+  gl.bindBuffer(gl.ARRAY_BUFFER,partBuf);
+  if(partReady) gl.bufferSubData(gl.ARRAY_BUFFER,0,pdata); else { gl.bufferData(gl.ARRAY_BUFFER,pdata,gl.DYNAMIC_DRAW); partReady=true; }
+}
+function updateStatus(){
+  if(!curQR) return; const n=curQR.size, v=curQR.ver;
+  $('vShape').textContent=shapeName(treeKey); $('vSeason').textContent=SEASONS[seasonKey].name; $('vWeather').textContent=WEATHERS[weatherKey].name;
+  $('vStyle').textContent=`${curQR.ecc} 级 · ${curQR.hole?'留白 '+curQR.hole.s+' 格':'实心'} · 版本 ${v} · ${n}×${n}`;
+  if(!glOK){ statusEl.textContent=`这个浏览器不支持 3D 显示，先给你平面的 ${n}×${n} 二维码。`; return; }
+  statusEl.textContent = qT===1
+    ? `${n}×${n} 的二维码，用手机对准屏幕就能扫。`
+    : `${SEASONS[seasonKey].name}的${shapeName(treeKey)}，${WEATHERS[weatherKey].name}。切到二维码，它会落成一张 ${n}×${n} 的码。`;
+}
+function drawFlat(){ // WebGL 不可用时的平面二维码
+  const d=Math.min(2,devicePixelRatio||1), W=canvas.clientWidth, H=canvas.clientHeight; canvas.width=W*d; canvas.height=H*d;
+  const x=canvas.getContext('2d'), n=curQR.size, S=n+8, m=Math.floor(Math.min(W,H-70)*.9/S)*d, ox=(canvas.width-S*m)/2, oy=(canvas.height-70*d-S*m)/2;
+  x.clearRect(0,0,canvas.width,canvas.height); x.fillStyle=QRPAL[seasonKey].board; x.fillRect(ox,oy,S*m,S*m);
+  for(let r=0;r<n;r++) for(let c=0;c<n;c++) if(curQR.mod[r][c]&&!inHole(r,c)){ x.fillStyle=css(qrInk(r,c,n,1)); x.fillRect(ox+(c+4)*m,oy+(r+4)*m,m,m); }
+}
+function rebuild(mode){ // mode: all=首次全部长出 tree=树重新长 qr=码格子弹出 none=无动画
+  let qr;
+  try{ qr=encodeQR(curText,eccKey,holeSize); }
+  catch(err){
+    if(err&&err.tooLong) statusEl.textContent=`这段内容在 ${eccKey} 级纠错下放不下了（${eccKey} 级最多约 ${err.capBytes} 字节），删一点，或者把纠错调低。`;
+    else statusEl.textContent='这段内容编不进二维码，换短一点试试。';
+    return;
+  }
+  curQR=qr;
+  if(!glOK){ drawFlat(); updateStatus(); return; }
+  scene=buildScene(qr,curText,mode); geom=packAll(scene.list); colors=packColors(scene.list); applyColors(geom,colors,null,1);
+  count=scene.list.length; fade=null; if(mode!=='none') grow=0;
+  gl.bindBuffer(gl.ARRAY_BUFFER,instBuf); gl.bufferData(gl.ARRAY_BUFFER,geom,gl.DYNAMIC_DRAW);
+  if(mode==='all') initParticles(); else if(particleTree!==treeKey) initSeasonFX();
+  updateStatus();
+}
+/* ========== 相机：正交投影，yaw 绕竖轴，pitch=90° 时就是正上方 ========== */
+const norm=v=>{ const l=Math.hypot(v[0],v[1],v[2])||1; return [v[0]/l,v[1]/l,v[2]/l]; };
+function lightBasis(L){ const v=norm(L), x=norm([v[2],0,-v[0]]), y=[v[1]*x[2]-v[2]*x[1],v[2]*x[0]-v[0]*x[2],v[0]*x[1]-v[1]*x[0]]; return { x, y, v }; }
+function basis(yaw,p){ const cy=Math.cos(yaw), sy=Math.sin(yaw), cp=Math.cos(p), sp=Math.sin(p); return { rx:[cy,0,-sy], ru:[-sy*sp,cp,-cy*sp], v:[cp*sy,sp,cp*cy] }; }
+function treeFit(p,W,H){
+  const b=basis(0,p), tr=scene.tree; let x0=1e9,x1=-1e9,u0=1e9,u1=-1e9;
+  const ring=(r,y)=>{ for(let i=0;i<12;i++){ const a=i/12*Math.PI*2, x=Math.cos(a)*r, z=Math.sin(a)*r, sx=x*b.rx[0]+z*b.rx[2], u=x*b.ru[0]+y*b.ru[1]+z*b.ru[2];
+    x0=Math.min(x0,sx); x1=Math.max(x1,sx); u0=Math.min(u0,u); u1=Math.max(u1,u); } };
+  ring(ISLAND.R+.8,0); ring(ISLAND.R*.45,-4.6); ring(tr.crownR+.5,tr.maxY*.75); ring(tr.crownR*.75,tr.maxY+.5);
+  return { k:Math.min(W*.86/(x1-x0),H*.84/(u1-u0)), c:(u0+u1)/2 };
+}
+function frame(now){
+  const dt=Math.min(.05,(now-last)/1000); last=now; clock+=dt; grow+=dt;
+  // 切换进度用带速度的弹簧推进：中途反向切换也不会突然顿住
+  if(q!==qT||qv!==0){ const dur=reduced?.4:2.4, maxV=1/dur, want=Math.sign(qT-q)*maxV;
+    qv+=(want-qv)*Math.min(1,dt*6); q=Math.max(0,Math.min(1,q+qv*dt));
+    if((qT===1&&q>=1)||(qT===0&&q<=0)){ q=qT; qv=0; } }
+  const e=ease(q);
+  if(!dragging){ treeYaw+=vel; vel*=.92; if(q===0&&!reduced&&!spinPaused) treeYaw+=dt*.1; }
+  if(fade){ fade.t=Math.min(1,fade.t+dt/.8); applyColors(geom,colors,fade.from,ease(fade.t)); gl.bindBuffer(gl.ARRAY_BUFFER,instBuf); gl.bufferSubData(gl.ARRAY_BUFFER,0,geom); if(fade.t>=1) fade=null; }
+  const dpr=Math.min(2,devicePixelRatio||1), W=canvas.clientWidth, H=canvas.clientHeight, bw=Math.round(W*dpr), bh=Math.round(H*dpr);
+  if(canvas.width!==bw||canvas.height!==bh){ canvas.width=bw; canvas.height=bh; }
+  // 天气切换时光照慢慢过渡
+  const Wt=WEATHERS[weatherKey], sm=1-Math.exp(-dt*2.5);
+  for(let i=0;i<3;i++){ WCUR.sun[i]+=(Wt.sun[i]-WCUR.sun[i])*sm; WCUR.sky[i]+=(Wt.sky[i]-WCUR.sky[i])*sm; WCUR.L[i]+=(Wt.L[i]-WCUR.L[i])*sm; }
+  // 光的方向跟着视角走（始终从画面左上方照过来），小岛转动时影子会在地上扫过、改变形状
+  const ly=treeYaw*(1-e), Lc=WCUR.L, Lw=[Lc[0]*Math.cos(ly)+Lc[2]*Math.sin(ly), Lc[1], -Lc[0]*Math.sin(ly)+Lc[2]*Math.cos(ly)];
+  WCUR.sh+=(Wt.sh-WCUR.sh)*sm; WCUR.wind+=(Wt.wind-WCUR.wind)*sm; WCUR.glow+=(Wt.glow-WCUR.glow)*sm;
+  // 积雪和地面湿润是慢慢积累、慢慢消退的
+  const snT=weatherKey==='snow'?1:0, wtT=weatherKey==='rain'?1:0;
+  WCUR.snow+=(snT-WCUR.snow)*(1-Math.exp(-dt*(snT>WCUR.snow?.14:.3))); WCUR.wet+=(wtT-WCUR.wet)*(1-Math.exp(-dt*(wtT>WCUR.wet?.5:.12)));
+  if(reduced){ WCUR.snow=snT; WCUR.wet=wtT; }
+  if(scene&&W>0&&H>0){
+    const avail=H-78, pitch=treePitch+(Math.PI/2-treePitch)*e, yaw=treeYaw*(1-e);
+    const tf=treeFit(treePitch,W,avail), kq=Math.min(W*.94,avail*.96)/(2*(ISLAND.R+1.1));
+    const k=tf.k+(kq-tf.k)*e, c=tf.c*(1-e), bob=reduced?0:Math.sin(clock*1.1)*.25*(1-e), b=basis(yaw,pitch), lb=lightBasis(Lw);
+    const setCommon=u=>{ gl.uniform1f(u.uTime,grow); gl.uniform1f(u.uMorph,q); gl.uniform1f(u.uClock,clock); gl.uniform1f(u.uWind,reduced?0:WCUR.wind); gl.uniform1f(u.uWet,WCUR.wet);
+      gl.uniform3fv(u.uLx,lb.x); gl.uniform3fv(u.uLy,lb.y); gl.uniform3fv(u.uLv,lb.v); gl.uniform3f(u.uLC,0,9,0); gl.uniform1f(u.uLs,1/25); };
+    updateFX(dt,1-e);
+    if(e<.999){ // 第一遍：从太阳方向画深度，得到阴影贴图
+      gl.bindFramebuffer(gl.FRAMEBUFFER,shadowFB); gl.viewport(0,0,SM,SM); gl.clear(gl.DEPTH_BUFFER_BIT);
+      gl.useProgram(sprog); setCommon(SU); gl.enable(gl.POLYGON_OFFSET_FILL); gl.polygonOffset(1.5,3);
+      gl.bindVertexArray(vaoMain); gl.drawArraysInstanced(gl.TRIANGLES,0,36,count);
+      gl.bindVertexArray(vaoPart); gl.drawArraysInstanced(gl.TRIANGLES,0,36,KT);
+      gl.disable(gl.POLYGON_OFFSET_FILL); gl.bindFramebuffer(gl.FRAMEBUFFER,null);
+    }
+    gl.viewport(0,0,bw,bh); gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT); gl.useProgram(prog); setCommon(U);
+    gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D,shadowTex); gl.uniform1i(U.uShadow,0);
+    gl.uniform3fv(U.uRx,b.rx); gl.uniform3fv(U.uRu,b.ru); gl.uniform3fv(U.uV,b.v);
+    gl.uniform2f(U.uProj,k*2/W,k*2/H); gl.uniform2f(U.uShift,0,((bob-c)*k+39)*2/H);
+    gl.uniform3fv(U.uL,lb.v); gl.uniform3fv(U.uSun,WCUR.sun); gl.uniform3fv(U.uSky,WCUR.sky);
+    gl.uniform1f(U.uFlat,e); gl.uniform1f(U.uEdge,1-e); gl.uniform1f(U.uShOn,WCUR.sh); gl.uniform1f(U.uGlow,WCUR.glow); gl.uniform1f(U.uSnow,WCUR.snow); gl.uniform1f(U.uWetF,WCUR.wet);
+    gl.bindVertexArray(vaoMain); gl.drawArraysInstanced(gl.TRIANGLES,0,36,count);
+    gl.bindVertexArray(vaoPart); gl.drawArraysInstanced(gl.TRIANGLES,0,36,KT);
+    gl.bindVertexArray(null);
+  }
+  requestAnimationFrame(frame);
+}
+/* ========== 交互 ========== */
+function setMode(m){
+  stage.dataset.mode=m; $('toTree').setAttribute('aria-pressed',m==='tree'); $('toQR').setAttribute('aria-pressed',m==='qr');
+  if(m==='qr'){ treeYaw=Math.atan2(Math.sin(treeYaw),Math.cos(treeYaw)); vel=0; dragging=false; canvas.classList.remove('dragging'); }
+  qT=m==='qr'?1:0; hint.hidden=m==='qr';
+  canvas.setAttribute('aria-label',m==='qr'?'俯视看到的二维码':`漂浮的方块小岛，岛上是${shapeName(treeKey)}`);
+  updateStatus();
+}
+const markChips=(id,key)=>{ for(const b of $(id).children) b.setAttribute('aria-checked',b.dataset.key===key); };
+function setTree(k){ if(k===treeKey) return; treeKey=k; markChips('treeChips',k); markChips('landChips',k); if(outMode==='show'){ const nu=currentShowUrl(); if(nu) curText=nu; } rebuild(qT===0?'tree':'none'); syncHash(); }
+function setSeason(k){
+  if(k===seasonKey) return; seasonKey=k; markChips('seasonChips',k); stage.dataset.season=k;
+  if(outMode==='show'){ applyNow(); return; }
+  if(!glOK){ if(curQR) drawFlat(); syncHash(); return; }
+  recolor(); initSeasonFX(); syncHash(); updateStatus();
+}
+function recolor(){ // 颜色平滑过渡到新的季节/天气配色
+  const snap=new Float32Array(colors.length); for(let i=0;i<colors.length/9;i++) for(let j=0;j<9;j++) snap[i*9+j]=geom[i*FL+12+j];
+  colors=packColors(scene.list); fade={from:snap,t:reduced?1:0};
+}
+function setWeather(k){
+  if(k===weatherKey) return; const wasNight=weatherKey==='night'; weatherKey=k; markChips('weatherChips',k); stage.dataset.weather=k;
+  if(outMode==='show'){ applyNow(); return; }
+  if(glOK){ initWeatherFX(); if(wasNight||k==='night') recolor(); }
+  syncHash(); updateStatus();
+}
+function chip(id,label,key,cur,on,season){
+  const b=document.createElement('button'); b.type='button'; b.className='chip'+(season?' sq':''); b.setAttribute('role','radio');
+  b.dataset.key=key; if(season){ b.dataset.s=key; b.setAttribute('aria-label',SEASONS[key].name); b.title=SEASONS[key].name; }
+  b.textContent=label; b.setAttribute('aria-checked',key===cur); b.addEventListener('click',()=>on(key)); $(id).appendChild(b); return b;
+}
+for(const k in TREES) chip('treeChips',TREES[k].name,k,treeKey,setTree,false);
+for(const k in LANDMARKS) chip('landChips',LANDMARKS[k].name,k,treeKey,setTree,false);
+for(const k in SEASONS) chip('seasonChips',SEASONS[k].name[0],k,seasonKey,setSeason,true);
+for(const k in WEATHERS) chip('weatherChips',WEATHERS[k].name,k,weatherKey,setWeather,false).dataset.w=k;
+
+$('toTree').addEventListener('click',()=>setMode('tree'));
+$('toQR').addEventListener('click',()=>setMode('qr'));
+let px=0, py=0;
+canvas.addEventListener('pointerdown',ev=>{ if(qT!==0||!glOK) return; dragging=true; vel=0; px=ev.clientX; py=ev.clientY; canvas.setPointerCapture(ev.pointerId); canvas.classList.add('dragging'); });
+canvas.addEventListener('pointermove',ev=>{ if(!dragging) return; const dx=ev.clientX-px, dy=ev.clientY-py; px=ev.clientX; py=ev.clientY;
+  treeYaw-=dx*.009; vel=-dx*.009; treePitch=Math.max(.12,Math.min(1.25,treePitch+dy*.006)); });
+const endDrag=()=>{ dragging=false; canvas.classList.remove('dragging'); };
+canvas.addEventListener('pointerup',endDrag); canvas.addEventListener('pointercancel',endDrag);
+
+/* ========== 内置二维码解码：不依赖 BarcodeDetector，任何浏览器都能读图 ==========
+   流程：灰度 → 大津法二值化 → 找三个定位图形的 1:1:3:1:1 → 仿射采样成模块矩阵 → 读格式信息 → RS 纠错 → 解析。
+   中间那块 logo 遮掉的模块，就是靠 Reed-Solomon 纠错补回来的，只校验不纠错的话永远读不出微信名片码。 */
+
+/* ---- GF(256) ---- */
+const GF_EXP = new Uint8Array(512), GF_LOG = new Uint16Array(256);
+(() => {
+  let x = 1;
+  for(let i=0;i<255;i++){ GF_EXP[i] = x; GF_LOG[x] = i; x <<= 1; if(x & 0x100) x ^= 0x11D; }
+  for(let i=255;i<512;i++) GF_EXP[i] = GF_EXP[i-255];
+})();
+const gmul = (a,b) => (a && b) ? GF_EXP[GF_LOG[a] + GF_LOG[b]] : 0;
+const ginv = a => GF_EXP[255 - GF_LOG[a]];
+const pIsZero = p => p.length === 1 && p[0] === 0;
+const pDeg = p => p.length - 1;
+const pTrim = p => { let i=0; while(i<p.length-1 && p[i]===0) i++; return i ? p.slice(i) : p; };
+const pAdd = (a,b) => {
+  if(a.length < b.length){ const t=a; a=b; b=t; }
+  const r = a.slice(), off = a.length - b.length;
+  for(let i=0;i<b.length;i++) r[i+off] ^= b[i];
+  return pTrim(r);
+};
+const pMul = (a,b) => {
+  if(pIsZero(a) || pIsZero(b)) return [0];
+  const r = new Array(a.length + b.length - 1).fill(0);
+  for(let i=0;i<a.length;i++) for(let j=0;j<b.length;j++) r[i+j] ^= gmul(a[i], b[j]);
+  return pTrim(r);
+};
+const pMono = (deg, scale) => scale === 0 ? [0] : [scale].concat(new Array(deg).fill(0));
+const pMulMono = (p, deg, scale) => {
+  if(scale === 0 || pIsZero(p)) return [0];
+  const r = new Array(p.length + deg).fill(0);
+  for(let i=0;i<p.length;i++) r[i] = gmul(p[i], scale);
+  return r;
+};
+const pEval = (p, x) => { let y = p[0]; for(let i=1;i<p.length;i++) y = gmul(y, x) ^ p[i]; return y; };
+const pScale = (p, s) => pMulMono(p, 0, s);
+
+/* 扩展欧几里得：解出错误定位多项式 sigma 和错误值多项式 omega */
+function qrEuclid(a, b, R){
+  if(pDeg(a) < pDeg(b)){ const t=a; a=b; b=t; }
+  let rLast = a, r = b, tLast = [0], t = [1];
+  while(2 * pDeg(r) >= R){
+    const rLastLast = rLast, tLastLast = tLast;
+    rLast = r; tLast = t;
+    if(pIsZero(rLast)) return null;
+    let r0 = rLastLast, q = [0];
+    const dlt = ginv(rLast[0]);
+    while(pDeg(r0) >= pDeg(rLast) && !pIsZero(r0)){
+      const dd = pDeg(r0) - pDeg(rLast);
+      const scale = gmul(r0[0], dlt);
+      q = pAdd(q, pMono(dd, scale));
+      r0 = pAdd(r0, pMulMono(rLast, dd, scale));
+    }
+    t = pAdd(pMul(q, tLast), tLastLast);
+    r = r0;
+  }
+  const s0 = t[t.length - 1];
+  if(s0 === 0) return null;
+  const inv = ginv(s0);
+  return [pScale(t, inv), pScale(r, inv)];
+}
+function qrErrLoc(sigma){
+  const nErr = pDeg(sigma), out = [];
+  for(let i=1;i<256 && out.length<nErr;i++) if(pEval(sigma, i) === 0) out.push(ginv(i));
+  return out.length === nErr ? out : null;
+}
+function qrErrMag(omega, locs){
+  const s = locs.length, out = new Array(s);
+  for(let i=0;i<s;i++){
+    const xiInv = ginv(locs[i]);
+    let den = 1;
+    for(let j=0;j<s;j++){
+      if(i === j) continue;
+      const term = gmul(locs[j], xiInv);
+      den = gmul(den, (term & 1) === 0 ? (term | 1) : (term & ~1));
+    }
+    out[i] = gmul(pEval(omega, xiInv), ginv(den));
+  }
+  return out;
+}
+/* 纠正一个块；错太多返回 null */
+function qrRSDecode(cw, twoS){
+  const n = cw.length;
+  if(!twoS) return cw;
+  let clean = true;
+  const synd = new Array(twoS);
+  for(let i=0;i<twoS;i++){
+    const e = pEval(cw, GF_EXP[i]);
+    synd[twoS-1-i] = e;
+    if(e) clean = false;
+  }
+  if(clean) return cw;
+  const eu = qrEuclid(pMono(twoS, 1), pTrim(synd), twoS);
+  if(!eu) return null;
+  const locs = qrErrLoc(eu[0]);
+  if(!locs) return null;
+  const mags = qrErrMag(eu[1], locs);
+  for(let i=0;i<locs.length;i++){
+    const pos = n - 1 - GF_LOG[locs[i]];
+    if(pos < 0 || pos >= n) return null;
+    cw[pos] ^= mags[i];
+  }
+  for(let i=0;i<twoS;i++) if(pEval(cw, GF_EXP[i])) return null;
+  return cw;
+}
+
+/* 1. 二值化 */
+function qrBinarize(data, w, h){
+  const n = w*h, gray = new Uint8Array(n), hist = new Uint32Array(256);
+  for(let i=0,p=0;i<n;i++,p+=4){
+    const g = (data[p]*0.299 + data[p+1]*0.587 + data[p+2]*0.114) | 0;
+    gray[i] = g; hist[g]++;
+  }
+  let sum = 0; for(let t=0;t<256;t++) sum += t*hist[t];
+  let wB = 0, sumB = 0, best = -1, thr = 128;
+  for(let t=0;t<256;t++){
+    wB += hist[t]; if(!wB) continue;
+    const wF = n - wB; if(!wF) break;
+    sumB += t*hist[t];
+    const mB = sumB/wB, mF = (sum-sumB)/wF, between = wB*wF*(mB-mF)*(mB-mF);
+    if(between > best){ best = between; thr = t; }
+  }
+  const dark = new Uint8Array(n);
+  for(let i=0;i<n;i++) dark[i] = gray[i] <= thr ? 1 : 0;
+  return dark;
+}
+
+/* 验证候选真的是 7x7 定位图形：中心 3x3 黑、内圈白环、外框黑。
+   这一步专门排除 5x5 的对齐图形——它横向比例也是 1:1:1:1:1，很容易蒙混过关。 */
+function qrCheckFinder(dark, w, h, x, y, m){
+  const at=(dx,dy)=>{ const X=Math.round(x+dx*m), Y=Math.round(y+dy*m);
+    if(X<0||X>=w||Y<0||Y>=h) return -1; return dark[Y*w+X]; };
+  for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++) if(at(dx,dy)!==1) return false;
+  for(const p of [[0,-2],[0,2],[-2,0],[2,0]]) if(at(p[0],p[1])!==0) return false;
+  for(const p of [[0,-3],[0,3],[-3,0],[3,0]]) if(at(p[0],p[1])!==1) return false;
+  return true;
+}
+
+/* 2. 在一行里找 黑:白:黑:白:黑 = 1:1:3:1:1 的定位图形 */
+function qrFindPatterns(dark, w, h){
+  const cands = [];
+  const step = h > 600 ? 2 : 1;   // 定位图形有 3 个模块高的匹配行，隔行扫不会漏，速度翻倍
+  for(let y=0;y<h;y+=step){
+    const row = y*w;
+    let x = 0;
+    while(x < w){
+      while(x < w && !dark[row+x]) x++;
+      if(x >= w) break;
+      const s = x;
+      let p = s, lens = [], col = 1;
+      for(let k=0;k<5 && p<w;k++){
+        let c = 0;
+        while(p < w && (dark[row+p] ? 1 : 0) === col){ p++; c++; }
+        if(!c) break;
+        lens.push(c); col ^= 1;
+      }
+      if(lens.length === 5){
+        const tot = lens[0]+lens[1]+lens[2]+lens[3]+lens[4], m = tot/7;
+        if(m >= 1.4 &&
+           Math.abs(lens[0]-m) < m*0.8 && Math.abs(lens[1]-m) < m*0.8 &&
+           Math.abs(lens[2]-3*m) < m*1.2 &&
+           Math.abs(lens[3]-m) < m*0.8 && Math.abs(lens[4]-m) < m*0.8){
+          const cx = s + tot/2, cy = y + 0.5;
+          if(qrCheckFinder(dark, w, h, cx, cy, m)) cands.push({ x: cx, y: cy, m });
+        }
+      }
+      x = s + 1;   // 只前进一格：这里的 5 段不匹配，不代表下一个黑点不是定位图形的起点
+    }
+  }
+  const groups = [];
+  for(const c of cands){
+    let hit = null;
+    for(const g of groups){
+      if(Math.abs(g.x-c.x) < Math.max(g.m,c.m)*1.7 && Math.abs(g.y-c.y) < Math.max(g.m,c.m)*1.7){ hit = g; break; }
+    }
+    if(hit){ const k = hit.n+1; hit.x = (hit.x*hit.n+c.x)/k; hit.y = (hit.y*hit.n+c.y)/k; hit.m = (hit.m*hit.n+c.m)/k; hit.n = k; }
+    else groups.push({ x:c.x, y:c.y, m:c.m, n:1 });
+  }
+  return groups.filter(g => g.n >= 2);
+}
+
+/* 3. 三个定位里挑出直角顶点（左上）和两条腰 */
+function qrPickTriple(gs){
+  let best = null;
+  for(let i=0;i<gs.length;i++) for(let j=i+1;j<gs.length;j++) for(let k=0;k<gs.length;k++){
+    if(k===i||k===j) continue;
+    const a=gs[i], b=gs[j], c=gs[k];
+    const ab=Math.hypot(a.x-b.x,a.y-b.y), ac=Math.hypot(a.x-c.x,a.y-c.y), bc=Math.hypot(b.x-c.x,b.y-c.y);
+    if(ac<9||bc<9) continue;
+    const mm=(a.m+b.m+c.m)/3;
+    if(Math.abs(a.m-mm)>mm*0.4 || Math.abs(b.m-mm)>mm*0.4 || Math.abs(c.m-mm)>mm*0.4) continue;
+    if(Math.abs(ac-bc) > Math.min(ac,bc)*0.25) continue;
+    if(Math.abs(ab*ab - ac*ac - bc*bc) > ab*ab*0.34) continue;
+    if(!best || ab > best.score){
+      const cr = (a.x-c.x)*(b.y-c.y) - (a.y-c.y)*(b.x-c.x);
+      best = cr > 0 ? { tl:c, tr:a, bl:b, score:ab } : { tl:c, tr:b, bl:a, score:ab };
+    }
+  }
+  return best;
+}
+
+/* 4. 按仿射把每个模块中心采出来 */
+function qrSample(dark, w, h, tl, tr, bl, size){
+  const sx = (tr.x-tl.x)/(size-7), sy = (tr.y-tl.y)/(size-7);
+  const tx = (bl.x-tl.x)/(size-7), ty = (bl.y-tl.y)/(size-7);
+  const mod = [];
+  for(let r=0;r<size;r++){
+    const row = [];
+    for(let c=0;c<size;c++){
+      const px0 = tl.x + (c-3)*sx + (r-3)*tx;
+      const py0 = tl.y + (c-3)*sy + (r-3)*ty;
+      let v = 0, k = 0;
+      for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++){
+        const X = Math.round(px0 + dx*0.28), Y = Math.round(py0 + dy*0.28);
+        if(X>=0 && X<w && Y>=0 && Y<h){ v += dark[Y*w+X]; k++; }
+      }
+      row.push(k && v*2 >= k);
+    }
+    mod.push(row);
+  }
+  return mod;
+}
+
+/* 5. 重建功能图形掩码（定位、时序、对齐、格式、版本区） */
+function qrFunctionMask(ver, size){
+  const fn = Array.from({length:size}, () => new Array(size).fill(false));
+  const mark = (x,y) => { if(x>=0 && x<size && y>=0 && y<size) fn[y][x] = true; };
+  for(let i=0;i<size;i++){ mark(6,i); mark(i,6); }
+  for(const [cx,cy] of [[3,3],[size-4,3],[3,size-4]])
+    for(let dy=-4;dy<=4;dy++) for(let dx=-4;dx<=4;dx++) mark(cx+dx, cy+dy);
+  const ap = alignPos(ver,size), na = ap.length;
+  for(let i=0;i<na;i++) for(let j=0;j<na;j++){
+    if((i===0&&j===0)||(i===0&&j===na-1)||(i===na-1&&j===0)) continue;
+    for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++) mark(ap[i]+dx, ap[j]+dy);
+  }
+  for(let i=0;i<=5;i++) mark(8,i);
+  mark(8,7); mark(8,8); mark(7,8);
+  for(let i=9;i<15;i++) mark(14-i,8);
+  for(let i=0;i<8;i++) mark(size-1-i,8);
+  for(let i=8;i<15;i++) mark(8,size-15+i);
+  mark(8,size-8);
+  if(ver>=7) for(let i=0;i<18;i++){ const a=size-11+i%3, c=Math.floor(i/3); mark(a,c); mark(c,a); }
+  return fn;
+}
+const QR_MASK = (m,x,y) => {
+  switch(m){
+    case 0: return (x+y)%2===0; case 1: return y%2===0; case 2: return x%3===0;
+    case 3: return (x+y)%3===0; case 4: return (Math.floor(x/3)+Math.floor(y/2))%2===0;
+    case 5: return x*y%2 + x*y%3===0; case 6: return (x*y%2 + x*y%3)%2===0;
+    default: return ((x+y)%2 + x*y%3)%2===0;
+  }
+};
+
+/* 6. 读格式信息：15 位里带着纠错等级和掩码，BCH 能纠 3 位错。
+   必须靠它定等级——低等级的生成多项式是高等级的因子，光看 RS 余数会误判：
+   一张 Q 级的码用 M 级的 18 次多项式去除，余数同样是 0。 */
+const QR_FB = [1, 0, 3, 2];   // L,M,Q,H 在格式信息里的 2 位标识
+function qrFmtCode(ei, mask){
+  const d = (QR_FB[ei] << 3) | mask;
+  let r = d; for(let i=0;i<10;i++) r = (r << 1) ^ ((r >>> 9) * 0x537);
+  return ((d << 10) | r) ^ 0x5412;
+}
+function qrReadFormat(mod, size, flipped){
+  const bit = (y,x) => { const v = mod[y][x] ? 1 : 0; return flipped ? v ^ 1 : v; };
+  const bits = [];
+  for(let i=0;i<=5;i++) bits.push(bit(i,8));
+  bits.push(bit(7,8)); bits.push(bit(8,8)); bits.push(bit(8,7));
+  for(let i=9;i<15;i++) bits.push(bit(8,14-i));
+  let v = 0; for(let i=0;i<15;i++) if(bits[i]) v |= 1 << i;
+  let best = null, bestD = 9;
+  for(let ei=0;ei<4;ei++) for(let mask=0;mask<8;mask++){
+    let d = 0, x = v ^ qrFmtCode(ei, mask);
+    while(x){ d += x & 1; x >>>= 1; }
+    if(d < bestD){ bestD = d; best = { ei, mask }; if(!d) return best; }
+  }
+  return bestD <= 3 ? best : null;
+}
+
+/* 7. 矩阵 → 文本 */
+function qrDecodeMatrix(mod, ver, flipped){
+  const size = mod.length, fn = qrFunctionMask(ver, size);
+  const rawCirc = (() => { let r=(16*ver+128)*ver+64; if(ver>=2){ const a=Math.floor(ver/7)+2; r-=(25*a-10)*a-55; if(ver>=7) r-=36; } return Math.floor(r/8); })();
+  const fmt = qrReadFormat(mod, size, flipped);
+  const tries = [];
+  if(fmt) tries.push(fmt);
+  // 格式信息读不准时，按纠错强度从高到低试：强的码用弱多项式也能过，反过来不行
+  for(let ei=3; ei>=0; ei--) for(let mask=0; mask<8; mask++){
+    if(fmt && fmt.ei === ei && fmt.mask === mask) continue;
+    tries.push({ ei, mask });
+  }
+  for(const t of tries){
+    const ei = t.ei, mask = t.mask;
+    const nb = NUM_BLK[ei][ver], el = ECC_CW[ei][ver];
+    const nShort = nb - rawCirc % nb, shortLen = Math.floor(rawCirc / nb);
+    const cw = new Uint8Array(rawCirc);
+    let bi = 0;
+    for(let right=size-1; right>=1; right-=2){
+      if(right === 6) right = 5;
+      for(let vert=0; vert<size; vert++) for(let j=0;j<2;j++){
+        const x = right-j, up = ((right+1)&2)===0, y = up ? size-1-vert : vert;
+        if(!fn[y][x] && bi < rawCirc*8){
+          let bit = mod[y][x] ? 1 : 0;
+          if(flipped) bit ^= 1;
+          if(QR_MASK(mask,x,y)) bit ^= 1;
+          cw[bi >>> 3] = (cw[bi >>> 3] << 1) | bit;
+          bi++;
+        }
+      }
+    }
+    if(bi !== rawCirc*8) continue;
+    const blocks = Array.from({length:nb}, () => []);
+    let k = 0;
+    for(let i=0;i<shortLen+1;i++) for(let j=0;j<nb;j++){
+      if(i !== shortLen-el || j >= nShort) blocks[j].push(cw[k++]);
+    }
+    if(k !== rawCirc) continue;
+    let ok = true;
+    const fixed = new Array(nb);
+    for(let j=0;j<nb;j++){
+      const r = qrRSDecode(blocks[j].slice(), el);
+      if(!r){ ok = false; break; }
+      fixed[j] = r;
+    }
+    if(!ok) continue;
+    const data = [];
+    for(let j=0;j<nb;j++) for(const v of fixed[j].slice(0, shortLen-el + (j<nShort?0:1))) data.push(v);
+    const bits = [];
+    for(const byte of data) for(let i=7;i>=0;i--) bits.push((byte>>>i)&1);
+    let p = 0; const read = n => { let v=0; for(let i=0;i<n;i++) v = (v<<1) | bits[p++]; return v; };
+    const cls = ver<=9?0:ver<=26?1:2, LB = qrLenBits, AL = ALNUM;
+    let text = '';
+    try{
+      while(p + 4 <= bits.length){
+        const mode = read(4);
+        if(mode === 0) break;
+        if(mode === 1){
+          const cnt = read(LB.num[cls]); if(!cnt) break; let t = 0;
+          while(t < cnt){ const r = Math.min(3, cnt-t); const v = read(r===3?10:r===2?7:4); text += String(v).padStart(r,'0'); t += r; }
+        } else if(mode === 2){
+          const cnt = read(LB.aln[cls]); if(!cnt) break; let t = 0;
+          while(t < cnt){
+            if(cnt-t >= 2){ const v = read(11); text += AL[Math.floor(v/45)] + AL[v%45]; t += 2; }
+            else { text += AL[read(6)]; t++; }
+          }
+        } else if(mode === 4){
+          const cnt = read(LB.byte[cls]); if(!cnt) break;
+          const buf = new Uint8Array(cnt);
+          for(let i=0;i<cnt;i++) buf[i] = read(8);
+          text += new TextDecoder().decode(buf);
+        } else break;
+      }
+    }catch(e){ continue; }
+    if(text) return { text, ecc: ECC_ORDER[ei], mask, ver, size };
+  }
+  return null;
+}
+
+/* 7. 二值图 → 文本 */
+function qrScan(dark, w, h){
+  const gs = qrFindPatterns(dark, w, h);
+  if(gs.length < 3) return null;
+  const tri = qrPickTriple(gs);
+  if(!tri) return null;
+  const { tl, tr, bl } = tri;
+  const d1 = Math.hypot(tr.x-tl.x, tr.y-tl.y), d2 = Math.hypot(bl.x-tl.x, bl.y-tl.y);
+  const ms = (tl.m + tr.m + bl.m) / 3;
+  const span = ((d1 + d2) / 2) / ms + 7;
+  const guess = Math.round((span - 17) / 4) * 4 + 17;
+  for(const size of [guess, guess-4, guess+4, guess-8, guess+8]){
+    if(size < 21 || size > 177) continue;
+    const ver = (size - 17) / 4;
+    if(ver < 1 || ver > 40 || ver % 1 !== 0) continue;
+    const mod = qrSample(dark, w, h, tl, tr, bl, size);
+    const r = qrDecodeMatrix(mod, ver, false);
+    if(r) return r;
+  }
+  return null;
+}
+
+/* 8. 整张图 → 文本。反色码很少见，只有黑像素过半才回头试一次，省掉一半扫描时间 */
+function qrDecodeImage(data, w, h){
+  if(w < 21 || h < 21) return null;
+  const dark = qrBinarize(data, w, h);
+  let cnt = 0;
+  for(let i=0;i<dark.length;i++) cnt += dark[i];
+  const hit = qrScan(dark, w, h);
+  if(hit) return hit;
+  if(cnt / dark.length < 0.5) return null;
+  const inv = new Uint8Array(dark.length);
+  for(let i=0;i<dark.length;i++) inv[i] = dark[i] ^ 1;
+  return qrScan(inv, w, h);
+}
+
+/* 8. 文件 → 文本。先问浏览器（有就用，最省事），没有就走内置解码 */
+let qrDetector = null, qrDetectorTried = false;
+async function qrBrowserDetect(bmp){
+  if(qrDetectorTried) return qrDetector ? await qrDetector.detect(bmp) : null;
+  qrDetectorTried = true;
+  try{
+    if(!('BarcodeDetector' in window)) return null;
+    const fmts = await BarcodeDetector.getSupportedFormats();
+    if(!fmts || fmts.indexOf('qr_code') < 0) return null;
+    qrDetector = new BarcodeDetector({ formats: ['qr_code'] });
+    return await qrDetector.detect(bmp);
+  }catch(e){ qrDetector = null; return null; }
+}
+
+/* ========== v2：内容类型 · 生成器 · 纠错与留白 · 识码 · 分享 ========== */
+let eccKey='M', holeSize=0, kind='text', manual='', bootMode='tree';
+let showMode=false, showPayload=null, outMode='qr', spinPaused=false, showView='card';
+const vals={enc:'WPA'};
+const inHole=(r,c)=>{ const h=curQR&&curQR.hole; return !!h&&r>=h.y0&&r<h.y0+h.s&&c>=h.x0&&c<h.x0+h.s; };
+
+/* ---- 小提示条 ---- */
+const toastEl=document.createElement('div'); toastEl.className='toast'; toastEl.setAttribute('role','status'); document.body.appendChild(toastEl);
+let toastT=0;
+function toast(msg){ toastEl.textContent=msg; toastEl.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>toastEl.classList.remove('show'),2800); }
+
+/* ---- WiFi / vCard 里的特殊字符要转义 ---- */
+const wEsc=s=>String(s??'').replace(/([\\;,:"])/g,'\\$1');
+const vEsc=s=>String(s??'').replace(/\\/g,'\\\\').replace(/\r?\n/g,'\\n').replace(/([,;])/g,'\\$1');
+
+/* ---- 十种内容，扫码器读到的其实都是字符串，区别只在格式约定 ---- */
+const KINDS=[
+  {k:'text', name:'文字', hint:'微信扫纯文字只会提示「不支持显示内容」，但长按能复制。想让别人在微信里直接看到，把下面的生成方式切到「动画展示页」。'},
+  {k:'url', name:'网址', fields:[{id:'u',label:'网址',ph:'example.com/page'}],
+   run:v=>{ const s=(v.u||'').trim(); if(!s) return ''; return /^[a-z][a-z0-9+.-]*:/i.test(s)?s:'https://'+s.replace(/^\/+/,''); },
+   hint:'没写 http 的话自动补 https://，扫码后直接打开。'},
+  {k:'wifi', name:'WiFi', fields:[
+      {id:'ssid',label:'网络名称 SSID',ph:'MyHome'},
+      {id:'pass',label:'密码',ph:'留空就是不加密'},
+      {id:'enc',label:'加密方式',type:'select',opts:[['WPA','WPA / WPA2 / WPA3'],['WEP','WEP'],['nopass','不加密（开放网络）']]},
+      {id:'hid',label:'隐藏网络',type:'check'}],
+   run:v=>{ const s=(v.ssid||'').trim(); if(!s) return '';
+     const t=v.enc==='nopass'?'nopass':(v.enc||'WPA');
+     return 'WIFI:T:'+t+';S:'+wEsc(s)+';'+(t==='nopass'?'':'P:'+wEsc(v.pass||'')+';')+(v.hid?'H:true;':'')+';'; },
+   hint:'扫码后手机会直接问「是否连接这个 WiFi」，不用再手打密码。密码里的分号、逗号、冒号、引号会自动转义。'},
+  {k:'card', name:'名片', fields:[
+      {id:'fn',label:'姓名',ph:'王小岛'},
+      {id:'org',label:'公司 / 组织',ph:'小岛工作室'},
+      {id:'title',label:'职位',ph:'设计师'},
+      {id:'tel',label:'手机',ph:'13800000000'},
+      {id:'mail',label:'邮箱',ph:'hi@example.com'},
+      {id:'url',label:'主页',ph:'example.com'},
+      {id:'note',label:'备注',ph:'随时欢迎来聊'}],
+   run:v=>{ const L=['BEGIN:VCARD','VERSION:3.0'];
+     const add=(k,x)=>{ if(x&&x.trim()) L.push(k+':'+vEsc(x.trim())); };
+     add('FN',v.fn); add('ORG',v.org); add('TITLE',v.title);
+     const tel=(v.tel||'').replace(/[^\d+]/g,''); if(tel) L.push('TEL;TYPE=CELL:'+tel);
+     add('EMAIL',v.mail); add('URL',v.url); add('NOTE',v.note);
+     L.push('END:VCARD'); return L.join('\n'); },
+   hint:'标准 vCard 3.0，iOS 和安卓扫完会直接弹「添加到通讯录」。微信内置扫一扫只认网址，扫到名片会显示成一段文本。'},
+  {k:'tel', name:'电话', fields:[{id:'n',label:'号码',ph:'+8613800000000'}],
+   run:v=>{ const s=(v.n||'').replace(/[^\d+]/g,''); return s?'tel:'+s:''; },
+   hint:'扫码后跳到拨号界面，号码填好，不会自动拨出去。'},
+  {k:'sms', name:'短信', fields:[{id:'n',label:'号码',ph:'10086'},{id:'body',label:'内容',type:'area',ph:'我想问一下……'}],
+   run:v=>{ const s=(v.n||'').replace(/[^\d+]/g,''); return s?'SMSTO:'+s+':'+(v.body||'').replace(/[\r\n]+/g,' '):''; },
+   hint:'扫码后打开短信界面，号码和内容都填好。'},
+  {k:'mail', name:'邮件', fields:[{id:'to',label:'收件人',ph:'hi@example.com'},{id:'sub',label:'主题',ph:'想聊聊合作'},{id:'body',label:'正文',type:'area',ph:''}],
+   run:v=>{ const t=(v.to||'').trim(); if(!t) return ''; const q=[];
+     if(v.sub) q.push('subject='+encodeURIComponent(v.sub)); if(v.body) q.push('body='+encodeURIComponent(v.body));
+     return 'mailto:'+t+(q.length?'?'+q.join('&'):''); },
+   hint:'扫码后打开邮件 App，收件人、主题、正文都填好。'},
+  {k:'geo', name:'位置', fields:[{id:'lat',label:'纬度',ph:'39.9163'},{id:'lng',label:'经度',ph:'116.3972'},{id:'nm',label:'地点名',ph:'天安门'}],
+   run:v=>{ const la=(v.lat||'').trim(), ln=(v.lng||'').trim(); if(!la||!ln) return '';
+     return 'geo:'+la+','+ln+(v.nm?';u='+encodeURIComponent(v.nm):''); },
+   hint:'地图类 App 一般能识别 geo:。想让微信里直接点开，就改用「网址」类型填一条高德或百度的分享链接。'},
+  {k:'wx', name:'微信名片', fields:[{id:'x',label:'名片链接',ph:'https://u.wechat.com/xxxxxxxx'}],
+   run:v=>(v.x||'').trim(),
+   hint:'微信里点「我 → 二维码名片」截图，用下面的「识码」把那串链接读出来粘到这里，就能换成自己的风格重画。内容一样，微信照样认这张名片。'},
+  {k:'douyin', name:'抖音名片', fields:[
+      {id:'paste',label:'粘贴抖音分享文案（会自动拆开填好）',type:'area',
+       ph:'zncu 抖音号：34229733091\nhttps://v.douyin.com/xxxxxx/',
+       parse:(text,v)=>{
+         const hit=[];
+         const m1=text.match(/抖音号[:：]\s*([0-9A-Za-z_.-]{4,})/);
+         if(m1){ v.id=m1[1]; hit.push('id'); }
+         const m2=text.match(/https?:\/\/v\.douyin\.com\/[^\s，,。]+/);
+         if(m2){ v.url=m2[0]; hit.push('url'); }
+         const first=(text.split('\n')[0]||'').replace(/抖音号[:：].*$/,'').replace(/^【|】$/g,'').trim();
+         if(first && first.length<=24 && !/^https?:/.test(first)){ v.name=first; hit.push('name'); }
+         return hit;
+       }},
+      {id:'name',label:'昵称',ph:'zncu'},
+      {id:'id',label:'抖音号',ph:'34229733091'},
+      {id:'bio',label:'简介',ph:'ai小白，尝试驯服ai中。。。'},
+      {id:'url',label:'主页链接（选填）',ph:'https://v.douyin.com/xxxxxx/'},
+      {id:'av',label:'头像图片地址（选填，不填就用昵称首字）',ph:'https://.../avatar.jpg'}],
+   show:v=>{
+     const n=(v.name||'').trim(), id=(v.id||'').trim(), bio=(v.bio||'').trim();
+     return {text:[n, id?('抖音号：'+id):'', bio].filter(Boolean).join('\n') || n || '抖音名片',
+             link:(v.url||'').trim(), av:(v.av||'').trim()};
+   },
+   run:v=>{
+     const n=(v.name||'').trim(), id=(v.id||'').trim(), bio=(v.bio||'').trim(), u=(v.url||'').trim();
+     if(u) return u;
+     if(!n && !id) return '';
+     return [n, id?('抖音号：'+id):'', bio].filter(Boolean).join('\n');
+   },
+   hint:'抖音的圆形码是它自己的格式，通用扫码器读不了，只能手填。最快的路子：在抖音里「我的 → 分享 → 复制链接」，把那段文案粘到第一栏，昵称、抖音号、链接会自动填好。填了主页链接，扫码就直接打开你的抖音；卡片上显示的是昵称和抖音号。'},
+  {k:'pay', name:'收款码', fields:[{id:'x',label:'收款码内容',ph:'wxp://f2f0… 或 https://qr.alipay.com/…'}],
+   run:v=>(v.x||'').trim(),
+   hint:'收款码本身就是一串内容，重新画一遍只要内容不变就照样能收钱。金额是平台侧设置的，码里塞不进金额。'},
+  {k:'raw', name:'原始内容', fields:[{id:'x',label:'直接写进码里的字符串',type:'area',ph:'随便什么，支持中文和换行'}],
+   run:v=>(v.x||''), hint:'扫码器读到的就是这段字符串，不加工。做暗号、做彩蛋用这个。'}
+];
+const kindDef=()=>KINDS.find(d=>d.k===kind)||KINDS[0];
+
+/* ---- 类型切换 ---- */
+const kindsEl=$('kinds'), fieldsEl=$('fields');
+function syncKinds(){ for(const b of kindsEl.children) b.setAttribute('aria-checked',String(b.dataset.k===kind)); }
+function renderKinds(){
+  kindsEl.innerHTML='';
+  for(const d of KINDS){
+    const b=document.createElement('button'); b.type='button'; b.className='kind'; b.setAttribute('role','radio'); b.dataset.k=d.k;
+    b.textContent=d.name; b.setAttribute('aria-checked',String(d.k===kind));
+    b.addEventListener('click',()=>{ if(kind===d.k) return; kind=d.k; syncKinds(); renderFields(); textEl.readOnly=kind!=='text'; applyNow(); });
+    kindsEl.appendChild(b);
+  }
+}
+function renderFields(){
+  fieldsEl.innerHTML='';
+  const d=kindDef();
+  if(!d.fields && !d.hint){ fieldsEl.hidden=true; return; }
+  fieldsEl.hidden=false;
+  for(const f of (d.fields||[])){
+    if(f.type==='check'){
+      const lb=document.createElement('label'); lb.className='check';
+      const inp=document.createElement('input'); inp.type='checkbox'; inp.checked=!!vals[f.id];
+      inp.addEventListener('change',()=>{ vals[f.id]=inp.checked; applySoon(120); });
+      lb.append(inp,document.createTextNode(f.label)); fieldsEl.appendChild(lb); continue;
+    }
+    const wrap=document.createElement('div'); wrap.className='fh';
+    const id='fld_'+d.k+'_'+f.id;
+    const lb=document.createElement('label'); lb.textContent=f.label; lb.htmlFor=id; wrap.appendChild(lb);
+    let inp;
+    if(f.type==='select'){
+      inp=document.createElement('select');
+      for(const [val,txt] of f.opts){ const o=document.createElement('option'); o.value=val; o.textContent=txt; inp.appendChild(o); }
+      if(vals[f.id]) inp.value=vals[f.id];
+      inp.addEventListener('change',()=>{ vals[f.id]=inp.value; applySoon(100); });
+    } else if(f.type==='area'){
+      inp=document.createElement('textarea'); inp.rows=3; inp.placeholder=f.ph||''; inp.value=vals[f.id]||'';
+      inp.addEventListener('input',()=>{
+        vals[f.id]=inp.value;
+        if(f.parse){                        // 粘贴一段分享文案，顺手把其他栏填上
+          const hit=f.parse(inp.value, vals)||[];
+          for(const key of hit){
+            const other=document.getElementById('fld_'+d.k+'_'+key);
+            if(other) other.value=vals[key]||'';
+          }
+        }
+        applySoon(220);
+      });
+    } else {
+      inp=document.createElement('input'); inp.type='text'; inp.placeholder=f.ph||''; inp.value=vals[f.id]||'';
+      inp.addEventListener('input',()=>{ vals[f.id]=inp.value; applySoon(220); });
+    }
+    inp.id=id; wrap.appendChild(inp); fieldsEl.appendChild(wrap);
+  }
+  if(d.hint){ const p=document.createElement('p'); p.className='note'; p.textContent=d.hint; fieldsEl.appendChild(p); }
+}
+/* ---- 生成内容 → 重建二维码 ---- */
+let aTm=0;
+function applySoon(ms){ clearTimeout(aTm); aTm=setTimeout(applyNow,ms); }
+function rawContent(){ return kind==='text' ? manual : (kindDef().run(vals)||''); }
+/* 展示页地址统一从这里出：卡片上展示什么（c）、点开后的小码装什么（l）、头像地址（av）都在这儿定 */
+function currentShowUrl(){
+  const def=kindDef(), raw=rawContent();
+  if(!raw) return '';
+  const sp = def.show ? def.show(vals) : {text:raw, link:'', av:''};
+  return showcaseUrl({c:sp.text||raw, l:sp.link||'', av:sp.av||'', v:showView, k:kind,
+                      s:seasonKey, w:weatherKey, r:treeKey, e:eccKey, h:holeSize});
+}
+function applyNow(){
+  const raw = rawContent();
+  if(kind!=='text') textEl.value=raw;
+  if(!raw){ curText=''; statusEl.textContent = kind==='text' ? '先写下一句话，种子才会发芽。' : '把上面的内容填一下。'; syncHash(); return; }
+  if(outMode==='show'){
+    const u = currentShowUrl();
+    if(!u){ curText=''; statusEl.textContent='本地 file:// 生成不了展示页地址，先把这一页部署到网上。'; syncHash(); return; }
+    curText = u;
+  } else {
+    curText = raw;
+  }
+  rebuild(qT===1?'qr':'none');
+  syncHash();
+}
+
+/* ---- 生成方式：一条内容，两种发法 ---- */
+function updateOutNote(){
+  const p=$('outNote'); if(!p) return;
+  const sb=$('shareBtn'), dl=$('saveQR');
+  if(sb) sb.textContent = outMode==='show' ? '复制展示页链接' : '复制分享链接';
+  if(dl) dl.textContent = outMode==='show' ? '下载这张码' : '下载二维码';
+  const sv=$('showView'); if(sv) sv.hidden = outMode!=='show';
+  if(outMode!=='show'){ p.textContent='二维码里装的就是上面的内容，扫码器直接读到它。'; return; }
+  const raw = kind==='text' ? manual : (kindDef().run(vals)||'');
+  const u = raw ? currentShowUrl() : '';
+  if(!u){ p.innerHTML='本地 <code>file://</code> 下没有网站地址。用线上地址打开这一页，或者先把 <b>dist</b> 部署上去。'; return; }
+  // 把地址明文摆出来：下面那张码里装的就是它，扫一下打开这个动画页
+  p.textContent='下面这张码里装的就是这个地址 —— 扫码打开动画页，点一下变内容：';
+  const code=document.createElement('code');
+  code.className='sc-url'; code.textContent=u;
+  p.appendChild(code);
+  const a=document.createElement('a');
+  a.href=u; a.target='_blank'; a.rel='noopener'; a.textContent='先看看 →'; a.style.color='var(--moss-deep)';
+  p.appendChild(a);
+}
+function setOutMode(v){
+  if(v===outMode) return;
+  if(v==='show' && location.protocol==='file:'){
+    toast('展示页要一个网站地址。用线上版打开这一页，或者先把 dist 部署上去。');
+    return;
+  }
+  outMode=v;
+  const el=$('outMode'); if(el) for(const b of el.children) b.setAttribute('aria-checked',String(b.dataset.v===v));
+  updateOutNote(); applyNow();
+}
+function initOutMode(){
+  const el=$('outMode'); if(!el) return;
+  el.innerHTML='';
+  for(const pair of [['qr','只生成二维码'],['show','生成动画展示页']]){
+    const b=document.createElement('button'); b.type='button'; b.dataset.v=pair[0]; b.textContent=pair[1];
+    b.setAttribute('role','radio'); b.setAttribute('aria-checked',String(outMode===pair[0]));
+    b.addEventListener('click',()=>setOutMode(pair[0]));
+    el.appendChild(b);
+  }
+  updateOutNote();
+}
+/* 「生成动画展示页」之下的第二层选择：点开后到底是内容卡片，还是一张大码 */
+function initShowView(){
+  const el=document.createElement('div');
+  el.className='outmode sub'; el.id='showView'; el.hidden=true;
+  el.setAttribute('role','radiogroup'); el.setAttribute('aria-label','点开后显示什么');
+  for(const pair of [['card','点开后：内容卡片'],['qr','点开后：大二维码']]){
+    const b=document.createElement('button'); b.type='button'; b.dataset.v=pair[0]; b.textContent=pair[1];
+    b.setAttribute('role','radio'); b.setAttribute('aria-checked',String(showView===pair[0]));
+    b.addEventListener('click',()=>{
+      if(showView===pair[0]) return;
+      showView=pair[0];
+      for(const x of el.children) x.setAttribute('aria-checked',String(x.dataset.v===pair[0]));
+      updateOutNote(); applyNow();
+    });
+    el.appendChild(b);
+  }
+  const note=$('outNote');
+  if(note && note.parentNode) note.parentNode.insertBefore(el, note);
+}
+
+/* ---- 把状态塞进 URL，发出去就是同一张码 ---- */
+const b64u=str=>{ const b=QR_ENC.encode(str); let s=''; for(let i=0;i<b.length;i++) s+=String.fromCharCode(b[i]); return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''); };
+const unb64u=str=>{ const s=atob(str.replace(/-/g,'+').replace(/_/g,'/')); const a=new Uint8Array(s.length); for(let i=0;i<s.length;i++) a[i]=s.charCodeAt(i); return new TextDecoder().decode(a); };
+function syncHash(){
+  if(showMode) return;
+  try{ history.replaceState(null,'','#'+b64u(JSON.stringify({k:kind,t:kind==='text'?manual:(kindDef().run(vals)||''),v:vals,e:eccKey,h:holeSize,s:seasonKey,w:weatherKey,r:treeKey,m:qT===1?'qr':'tree',o:outMode}))); }catch(e){}
+}
+function readHash(){
+  const raw=location.hash.replace(/^#/,''); if(!raw) return false;
+  let o; try{ o=JSON.parse(unb64u(raw)); }catch(e){ return false; }
+  if(!o||typeof o!=='object') return false;
+  if(o.k&&KINDS.some(d=>d.k===o.k)) kind=o.k;
+  if(o.v&&typeof o.v==='object') Object.assign(vals,o.v);
+  if(o.e&&ECC_ORDER.indexOf(o.e)>=0) eccKey=o.e;
+  if(typeof o.h==='number') holeSize=Math.max(0,Math.min(11,o.h|0));
+  if(o.s&&SEASONS[o.s]) seasonKey=o.s;
+  if(o.w&&WEATHERS[o.w]) weatherKey=o.w;
+  if(o.r&&(TREES[o.r]||LANDMARKS[o.r])) treeKey=o.r;
+  if(o.m==='qr'||o.m==='tree') bootMode=o.m;
+  if(o.o==='show'||o.o==='qr') outMode=o.o;
+  if(kind==='text'&&typeof o.t==='string') manual=o.t;
+  return true;
+}
+
+/* ---- 展示页：把状态压成一条 URL，扫码打开就是全屏舞台 ----
+   载荷用紧凑格式「内容~季节~天气~树种~纠错~留白」，比 JSON 短一半，链接发出去没那么吓人。 */
+const escShow=s=>String(s).replace(/\\/g,'\\\\').replace(/~/g,'\\~');
+function packShow(p){
+  const v=[escShow(p.c||''), p.s||'spring', p.w||'sunny', p.r||'sakura', p.e||'M', String(p.h||0), p.k||'text', escShow(p.l||''), escShow(p.av||''), p.v||'card'];
+  const d=['', 'spring', 'sunny', 'sakura', 'M', '0', 'text', '', '', 'card'];
+  let n=v.length;
+  while(n>1 && v[n-1]===d[n-1]) n--;   // 尾巴上的默认值全砍掉，链接能短一截
+  return v.slice(0,n).join('~');
+}
+function unpackShow(str){
+  const parts=[]; let cur='';
+  for(let i=0;i<str.length;i++){
+    const ch=str.charAt(i);
+    if(ch==='\\' && i+1<str.length){ cur+=str.charAt(i+1); i++; }
+    else if(ch==='~'){ parts.push(cur); cur=''; }
+    else cur+=ch;
+  }
+  parts.push(cur);
+  return {c:parts[0]||'', s:parts[1]||'spring', w:parts[2]||'sunny', r:parts[3]||'sakura', e:parts[4]||'M', h:parseInt(parts[5],10)||0,
+          k:parts[6]||'text', l:parts[7]||'', av:parts[8]||'', v:parts[9]||'card'};
+}
+function showcaseUrl(p){
+  if(location.protocol==='file:') return '';
+  return location.protocol+'//'+location.host+location.pathname+'#v='+b64u(packShow(p));
+}
+function readShowHash(){
+  if(location.hash.indexOf('#v=')!==0) return false;
+  try{
+    const raw=unb64u(location.hash.slice(3));
+    const p = raw.charAt(0)==='{' ? JSON.parse(raw) : unpackShow(raw);   // 老的 JSON 格式也照读
+    if(!p || typeof p.c!=='string' || !p.c.trim()) return false;
+    showPayload=p; showMode=true;
+    if(p.r&&(TREES[p.r]||LANDMARKS[p.r])) treeKey=p.r;
+    if(p.s&&SEASONS[p.s]) seasonKey=p.s;
+    if(p.w&&WEATHERS[p.w]) weatherKey=p.w;
+    if(p.e&&ECC_ORDER.indexOf(p.e)>=0) eccKey=p.e;
+    if(typeof p.h==='number') holeSize=Math.max(0,Math.min(11,p.h|0));
+    return true;
+  }catch(e){ return false; }
+}
+
+/* 落定之后浮出来的是一张内容卡片：直接能读，底下挂一个小码给想存下来的人。
+   卡片里的文字全部转义——payload 在 URL 里，谁都能改，不能当 HTML 用。 */
+const escHtml = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function renderShowCard(){
+  const p = showPayload || {}, raw = p.c || '', k = p.k || 'text';
+  const lab = t => '<p class="sc-lab">' + escHtml(t) + '</p>';
+  const big = t => '<p class="sc-big">' + escHtml(t) + '</p>';
+  const sub = t => '<p class="sc-sub">' + escHtml(t) + '</p>';
+  let body;
+  if(k === 'wifi'){
+    const o = wifiParse(raw.replace(/^WIFI:/i, ''));
+    body = lab('WiFi') + big(o.S || '未命名网络') +
+      (o.P ? sub('密码 ' + o.P) : '（开放网络）') + (o.H === 'true' ? sub('隐藏网络') : '');
+  } else if(k === 'card'){
+    const get = n => { const m = raw.match(new RegExp('^' + n + '[^:]*:(.*)$', 'im')); return m ? m[1].trim() : ''; };
+    const lines = [get('ORG'), get('TITLE')].filter(Boolean).map(sub).join('');
+    const tel = get('TEL'), mail = get('EMAIL');
+    body = lab('名片') + big(get('FN') || '未具名') + lines + (tel ? sub(tel) : '') + (mail ? sub(mail) : '');
+  } else if(k === 'url'){
+    let host = raw;
+    try { host = new URL(raw).hostname.replace(/^www\./, ''); } catch(e){ }
+    body = lab('网址') + big(host) + sub(raw);
+  } else if(k === 'tel'){
+    body = lab('电话') + big(raw.replace(/^tel:/i, ''));
+  } else if(k === 'sms'){
+    const m = raw.match(/^SMSTO:([^:]*):?([\s\S]*)$/i);
+    body = lab('短信') + big((m ? m[1] : raw).replace(/[^\d+]/g, '') || raw) + (m && m[2] ? '<p class="sc-text">' + escHtml(m[2]) + '</p>' : '');
+  } else if(k === 'mail'){
+    body = lab('邮件') + big(raw.replace(/^mailto:/i, '').split('?')[0]);
+  } else if(k === 'geo'){
+    const m = raw.match(/^geo:([^,]+),([^,;]+)/i);
+    body = lab('位置') + big(m ? (m[1] + ', ' + m[2]) : raw);
+  } else if(k === 'douyin'){
+    const lines = raw.split('\n').map(s => s.trim()).filter(Boolean);
+    const name = lines[0] || '抖音';
+    const av = p.av
+      ? '<img class="sc-avatar" src="' + escHtml(p.av) + '" alt="">'
+      : '<div class="sc-avatar">' + escHtml((name[0] || '抖').toUpperCase()) + '</div>';
+    body = av + lab('抖音名片') + big(name) + lines.slice(1).map(sub).join('');
+  } else if(k === 'wx'){
+    body = lab('微信名片') + big('加个微信吧') + sub('点开链接，或长按下面的码');
+  } else if(k === 'pay'){
+    body = lab('收款码') + big('扫码付款') + sub('长按下面的码');
+  } else {
+    body = '<p class="sc-text">' + escHtml(raw) + '</p>';
+  }
+  return '<div class="sc-body">' + body + '</div>' +
+    '<div class="sc-mini"><img alt="二维码"><span>' + (p.l ? '扫码打开抖音' : '扫码 / 长按保存') + '</span></div>';
+}
+
+let cardEl=null, cardT=0;
+function ensureCard(){
+  if(cardEl) return cardEl;
+  cardEl = document.createElement('div');
+  cardEl.className = 'sc-card';
+  cardEl.addEventListener('click', e => {
+    if(e.target.closest('.sc-mini')) return;    // 点小码不切换，方便长按识别
+    if(qT === 1) flipShow();
+  });
+  document.body.appendChild(cardEl);
+  return cardEl;
+}
+function handleCard(){
+  if(!showMode) return;
+  const el = ensureCard(); clearTimeout(cardT);
+  if(qT === 1){
+    const poster = (showPayload.v === 'qr');     // 点开后要一处大码，还是要一张卡片
+    el.classList.toggle('poster', poster);
+    el.innerHTML = poster ? '<img class="sc-poster" alt="二维码">' : renderShowCard();
+    // 大码模式：装的就是这个展示页自己的网址，扫出来又回到这里，可以无限转发
+    const target = (showPayload.v === 'qr') ? location.href : (showPayload.l || showPayload.c);
+    const c = qrCanvas(target);
+    const im = el.querySelector(poster ? '.sc-poster' : '.sc-mini img');
+    if(c && im) im.src = c.toDataURL('image/png');
+    cardT = setTimeout(()=>{
+      if(qT !== 1) return;
+      el.classList.add('on');
+      document.body.classList.add('qr-on');
+    }, 1900);
+  } else {
+    el.classList.remove('on');
+    document.body.classList.remove('qr-on');
+  }
+}
+function flipShow(){ setMode(qT===1?'tree':'qr'); handleCard(); }
+
+function buildShowcase(){
+  // 展示页里只有一座岛：轻点切换，拖动转一转，别的什么都没有
+  const wrap=document.createElement('div'); wrap.className='sc-wrap';
+  wrap.innerHTML='<div class="sc-tip" id="scTip">轻触切换 · 拖动转一转</div>';
+  document.body.appendChild(wrap);
+  requestAnimationFrame(()=>wrap.classList.add('on'));
+
+  let sx=0, sy=0, down=false, moved=false;
+  canvas.addEventListener('pointerdown',e=>{ down=true; moved=false; sx=e.clientX; sy=e.clientY; },{passive:true});
+  canvas.addEventListener('pointermove',e=>{
+    if(down && !moved && Math.hypot(e.clientX-sx,e.clientY-sy) > 9) moved=true;
+  },{passive:true});
+  canvas.addEventListener('pointerup',()=>{ if(!down) return; down=false; if(!moved) flipShow(); });
+  canvas.addEventListener('pointercancel',()=>{ down=false; });
+
+  const tip=wrap.querySelector('#scTip');
+  setTimeout(()=>tip.classList.add('hide'),3800);
+  setTimeout(()=>{ if(tip.parentNode) tip.remove(); },5800);
+}
+
+/* ---- 纠错等级与中心留白 ---- */
+function setEcc(k){
+  if(k===eccKey) return; eccKey=k; markChips('eccChips',k);
+  if(k!=='Q'&&k!=='H'&&holeSize>0){ holeSize=0; markChips('holeChips','0'); toast('中心留白要靠 Q 或 H 级纠错补回来，帮你关掉了。'); }
+  applyNow();
+}
+function setHole(k){
+  const v=parseInt(k,10)||0;
+  if(v>0&&eccKey!=='Q'&&eccKey!=='H'){ toast('中心留白要靠纠错补回来，先把上面的纠错调到 Q 或 H。'); return; }
+  if(v===holeSize) return;
+  holeSize=v; markChips('holeChips',String(v)); applyNow();
+}
+function initStyleChips(){
+  const ECCN={L:'L · 7%',M:'M · 15%',Q:'Q · 25%',H:'H · 30%'};
+  for(const k of ECC_ORDER) chip('eccChips',ECCN[k],k,eccKey,setEcc,false);
+  for(const [k,t] of [['0','关'],['5','小 5 格'],['7','中 7 格']]) chip('holeChips',t,k,String(holeSize),setHole,false);
+}
+
+/* ---- 识码：把别人二维码里的内容读出来 ---- */
+function detectKind(raw){
+  const s=raw.trim();
+  if(/^wxp:\/\//i.test(s)||/^https?:\/\/qr\.alipay\.com/i.test(s)||/^alipays?:\/\//i.test(s)) return 'pay';
+  if(/u\.wechat\.com|weixin\.qq\.com\/r\//i.test(s)) return 'wx';
+  if(/^WIFI:/i.test(s)) return 'wifi';
+  if(/^TEL:/i.test(s)) return 'tel';
+  if(/^SMS(TO)?:/i.test(s)) return 'sms';
+  if(/^mailto:/i.test(s)) return 'mail';
+  if(/^geo:/i.test(s)) return 'geo';
+  if(/^https?:\/\//i.test(s)) return 'url';
+  return 'raw';
+}
+function wifiParse(raw){
+  const out={}; let cur='';
+  for(let p=0;p<raw.length;p++){ const ch=raw[p];
+    if(ch==='\\'&&p+1<raw.length){ cur+=raw[p+1]; p++; }
+    else if(ch===';'){ const j=cur.indexOf(':'); if(j>=0) out[cur.slice(0,j).toUpperCase()]=cur.slice(j+1); cur=''; }
+    else cur+=ch; }
+  const j=cur.indexOf(':'); if(j>=0) out[cur.slice(0,j).toUpperCase()]=cur.slice(j+1);
+  return out;
+}
+function applyDecoded(raw){
+  const k=detectKind(raw);
+  if(k==='wx'||k==='pay'){ vals.x=raw; }
+  else if(k==='url'){ vals.u=raw; }
+  else if(k==='tel'){ vals.n=raw.replace(/^tel:/i,'').split(';')[0].replace(/[^\d+]/g,''); }
+  else if(k==='sms'){ const m=raw.match(/^SMS(?:TO)?:([^:]*):?([\s\S]*)$/i); if(m){ vals.n=(m[1]||'').replace(/[^\d+]/g,''); vals.body=m[2]||''; } }
+  else if(k==='mail'){ const m=raw.match(/^mailto:([^?]*)(?:\?([\s\S]*))?$/i);
+    if(m){ vals.to=m[1]||''; const q=new URLSearchParams(m[2]||''); vals.sub=q.get('subject')||''; vals.body=q.get('body')||''; } }
+  else if(k==='geo'){ const m=raw.match(/^geo:([^,;]+),([^,;]+)/i);
+    if(m){ vals.lat=m[1]; vals.lng=m[2]; const u=raw.match(/[;?&]u=([^&;]+)/); if(u) vals.nm=decodeURIComponent(u[1]); } }
+  else if(k==='wifi'){ const o=wifiParse(raw.replace(/^WIFI:/i,''));
+    vals.ssid=o.S||''; vals.pass=o.P||''; vals.hid=String(o.H||'').toLowerCase()==='true';
+    const t=String(o.T||'WPA').toUpperCase();
+    vals.enc = t==='NOPASS' ? 'nopass' : (t==='WEP' ? 'WEP' : 'WPA'); }
+  else { vals.x=raw; }
+  if(k==='raw') manual=raw;
+  kind=k; syncKinds(); renderFields(); textEl.readOnly=kind!=='text';
+  applyNow();
+  toast('读到了 '+raw.length+' 个字符，按「'+kindDef().name+'」填好了');
+}
+async function qrToBitmap(file){
+  if('createImageBitmap' in window){ try{ return await createImageBitmap(file); }catch(e){ } }
+  return await new Promise((res,rej)=>{ const im=new Image(); im.onload=()=>res(im); im.onerror=rej; im.src=URL.createObjectURL(file); });
+}
+async function decodeFile(file){
+  const note=$('scanNote'); if(!file) return;
+  note.textContent='正在识别…';
+  await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));  // 先把"正在识别"画出来，别让人以为点空了
+  try{
+    const bmp = await qrToBitmap(file);
+    let raw = null, how = '';
+    try{
+      const res = await qrBrowserDetect(bmp);
+      if(res && res.length){ raw = res[0].rawValue || ''; how = '浏览器识别'; }
+    }catch(e){ }
+    if(!raw){
+      const scale = Math.min(1, 1400/Math.max(bmp.width||1, bmp.height||1));
+      const w = Math.max(1, Math.round((bmp.width||1)*scale)), h = Math.max(1, Math.round((bmp.height||1)*scale));
+      const cv = document.createElement('canvas'); cv.width=w; cv.height=h;
+      const cx = cv.getContext('2d', {willReadFrequently:true});
+      cx.drawImage(bmp, 0, 0, w, h);
+      const im = cx.getImageData(0, 0, w, h);
+      const r = qrDecodeImage(im.data, w, h);
+      if(r){ raw = r.text; how = '内置解码 v'+r.ver+' / '+r.ecc+' 级'; }
+    }
+    if(!raw){ note.textContent='这张图里没找到能识别的二维码。尽量用原图、别裁太狠，二维码四周留一点白边最容易认。'; return; }
+    note.textContent = '读到（'+how+'）：' + (raw.length>140 ? raw.slice(0,140)+'…' : raw);
+    applyDecoded(raw);
+  }catch(err){
+    note.textContent='读图失败：'+((err&&err.message)||err);
+  }
+}
+function bindScan(){
+  const drop=$('drop'), fi=$('qrfile');
+  const pick=f=>{ if(f && /^image\//.test(f.type||'image/')) decodeFile(f); };
+  ['dragenter','dragover'].forEach(t=>drop.addEventListener(t,e=>{ e.preventDefault(); e.stopPropagation(); drop.classList.add('over'); }));
+  ['dragleave','dragend'].forEach(t=>drop.addEventListener(t,e=>{ e.preventDefault(); drop.classList.remove('over'); }));
+  drop.addEventListener('drop',e=>{ e.preventDefault(); e.stopPropagation(); drop.classList.remove('over');
+    pick(e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]); });
+  fi.addEventListener('change',()=>{ pick(fi.files && fi.files[0]); fi.value=''; });
+  // 拖到页面任何地方都能读，并给出明确的视觉反馈——之前"没反应"就是缺了这一步
+  const hasFiles=e=>{ const t=e.dataTransfer&&e.dataTransfer.types; return t && Array.prototype.indexOf.call(t,'Files')>=0; };
+  addEventListener('dragover',e=>{
+    if(!hasFiles(e)) return;
+    e.preventDefault();
+    if(!document.body.classList.contains('dragging-file')) document.body.classList.add('dragging-file');
+  });
+  addEventListener('dragleave',e=>{ if(!e.relatedTarget) document.body.classList.remove('dragging-file'); });
+  addEventListener('drop',e=>{
+    document.body.classList.remove('dragging-file');
+    if(!hasFiles(e)) return;
+    e.preventDefault();
+    pick(e.dataTransfer.files && e.dataTransfer.files[0]);
+  });
+  addEventListener('paste',e=>{
+    const items=e.clipboardData&&e.clipboardData.items; if(!items) return;
+    for(const it of items){ if(it.type&&it.type.indexOf('image/')===0){ const f=it.getAsFile(); if(f){ decodeFile(f); break; } } }
+  });
+}
+function bindShare(){
+  $('shareBtn').addEventListener('click',async()=>{
+    let url='', tip='';
+    if(outMode==='show'){
+      url = curText || '';
+      if(!url || url.indexOf('#v=')<0){ toast('先在上面写上内容，展示页地址才生得出来'); return; }
+      tip = '展示页链接已复制，朋友打开就是那座小岛';
+    } else {
+      syncHash();
+      url = location.protocol+'//'+location.host+location.pathname+location.search+location.hash;
+      tip = location.protocol==='file:' ? '链接已复制。本地打开时它只对你这台电脑有效，部署到网上之后才是能发给别人的链接。' : '链接已复制，谁打开都是同一张码';
+    }
+    try{ await navigator.clipboard.writeText(url); toast(tip); }
+    catch(e){
+      const ta=document.createElement('textarea'); ta.value=url; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select();
+      let ok=false; try{ ok=document.execCommand('copy'); }catch(_){ }
+      ta.remove();
+      toast(ok?tip:'复制没成功，地址栏里 # 后面那一串就是分享内容');
+    }
+  });
+}
+
+/* ---- 面板收纳 + 键盘快捷键：调整样式时不用往下滑，岛一直在旁边 ---- */
+let panelCollapsed=false;
+function initCollapse(){
+  const b=document.createElement('button');
+  b.type='button'; b.className='collapse-btn'; b.textContent='‹'; b.title='收起面板（[）';
+  b.addEventListener('click',toggleCollapse);
+  document.body.appendChild(b);
+}
+function toggleCollapse(){
+  panelCollapsed=!panelCollapsed;
+  document.body.classList.toggle('collapsed',panelCollapsed);
+  const b=document.querySelector('.collapse-btn');
+  if(b){ b.textContent=panelCollapsed?'›':'‹'; b.title=(panelCollapsed?'展开':'收起')+'面板（[）'; }
+}
+const KEY_SEASON={'1':'spring','2':'summer','3':'autumn','4':'winter'};
+const KEY_WEATHER={q:'sunny',w:'cloudy',e:'rain',r:'snow',t:'night'};
+const KEY_SHAPE={a:'apple',s:'pine',d:'sakura',f:'birch',g:'canton',h:'pearl',j:'temple',k:'pagoda'};
+function bindKeys(){
+  addEventListener('keydown',e=>{
+    if(e.ctrlKey||e.metaKey||e.altKey) return;
+    const t=e.target;
+    if(t && (t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.tagName==='SELECT'||t.isContentEditable)) return;
+    if(e.key===' '||e.code==='Space'){ setMode(qT===1?'tree':'qr'); e.preventDefault(); return; }
+    if(e.key==='['){ toggleCollapse(); e.preventDefault(); return; }
+    const k=e.key.length===1 ? e.key.toLowerCase() : '';
+    if(!k) return;
+    if(k==='p'){ toggleSpin(); e.preventDefault(); return; }
+    if(KEY_SEASON[k]){ setSeason(KEY_SEASON[k]); e.preventDefault(); return; }
+    if(KEY_WEATHER[k]){ setWeather(KEY_WEATHER[k]); e.preventDefault(); return; }
+    if(KEY_SHAPE[k]){ setTree(KEY_SHAPE[k]); e.preventDefault(); return; }
+  });
+}
+/* 只停小岛的自转，季节、天气、粒子、拖动全都照常 */
+function toggleSpin(){
+  spinPaused=!spinPaused;
+  document.body.classList.toggle('spin-paused',spinPaused);
+  toast(spinPaused?'小岛已停止自转（按 P 继续）':'小岛继续转');
+}
+
+/* ---- 启动 ---- */
+function boot(){
+  if(readShowHash()){   // 扫码打开的展示页：全屏小岛 + 点一下变二维码
+    manual = showPayload.c; kind = 'text';
+    renderKinds(); renderFields(); initStyleChips();
+    textEl.readOnly = true; textEl.value = manual;
+    stage.dataset.season = seasonKey; stage.dataset.weather = weatherKey;
+    markChips('treeChips',treeKey); markChips('landChips',treeKey);
+    markChips('seasonChips',seasonKey); markChips('weatherChips',weatherKey);
+    curText = manual;
+    document.body.classList.add('showcase');
+    rebuild('all');
+    if(glOK){ setMode('tree'); requestAnimationFrame(frame); }
+    else { $('toggle').hidden=true; hint.hidden=true; updateStatus(); }
+    buildShowcase();
+    return;
+  }
+  readHash();
+  if(!KINDS.some(d=>d.k===kind)) kind='text';
+  manual = manual || (textEl.value||'').trim() || '愿你今天也被温柔以待';
+  renderKinds(); renderFields(); initStyleChips(); initOutMode(); initShowView();
+  textEl.readOnly = kind!=='text';
+  stage.dataset.season=seasonKey; stage.dataset.weather=weatherKey;
+  markChips('treeChips',treeKey); markChips('landChips',treeKey);
+  markChips('seasonChips',seasonKey); markChips('weatherChips',weatherKey);
+  curText = kind==='text' ? manual : (kindDef().run(vals)||'');
+  textEl.value = curText;
+  rebuild('all');
+  if(glOK){ setMode(bootMode); requestAnimationFrame(frame); }
+  else { $('toggle').hidden=true; hint.hidden=true; addEventListener('resize',()=>{ if(curQR) drawFlat(); }); updateStatus(); }
+  bindScan(); bindShare(); bindKeys(); initCollapse();
+  textEl.addEventListener('input',()=>{ if(kind!=='text') return; manual=textEl.value; applySoon(320); });
+  syncHash();
+}
+function download(url,name){ const a=document.createElement('a'); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove(); }
+function qrCanvas(text){
+  let qr = curQR;
+  if(text && text !== curText){
+    try{ qr = encodeQR(text, eccKey, holeSize); }catch(e){ return null; }
+  }
+  if(!qr) return null;
+  const n = qr.size, pad = 4, S = n + pad*2;
+  const h = qr.hole, inH = (r,c)=> !!h && r>=h.y0 && r<h.y0+h.s && c>=h.x0 && c<h.x0+h.s;
+  const sel=$('exportSize'), want=Math.max(320,parseInt(sel&&sel.value,10)||1024), m=Math.max(4,Math.round(want/S)), px=S*m;
+  const c=document.createElement('canvas'); c.width=c.height=px;
+  const x=c.getContext('2d'); x.imageSmoothingEnabled=false;
+  x.fillStyle=QRPAL[seasonKey].board; x.fillRect(0,0,px,px);
+  for(let r=0;r<n;r++) for(let cc=0;cc<n;cc++) if(qr.mod[r][cc]&&!inH(r,cc)){ x.fillStyle=css(qrInk(r,cc,n,1)); x.fillRect((cc+pad)*m,(r+pad)*m,m,m); }
+  return c;
+}
+function exportQR(){
+  const c=qrCanvas(); if(!c) return;
+  download(c.toDataURL('image/png'),`小岛二维码-${curQR.size}x${curQR.size}-${curQR.ecc}.png`);
+}
+$('saveQR').addEventListener('click',exportQR);
+$('saveView').addEventListener('click',()=>{
+  const cs=getComputedStyle(stage), c=document.createElement('canvas'); c.width=canvas.width; c.height=canvas.height;
+  const x=c.getContext('2d'), g=x.createLinearGradient(0,0,0,c.height);
+  g.addColorStop(0,cs.getPropertyValue('--sky1').trim()||'#f8dde6'); g.addColorStop(.72,cs.getPropertyValue('--sky2').trim()||'#eef3e4'); g.addColorStop(1,cs.getPropertyValue('--sky2').trim()||'#eef3e4');
+  x.fillStyle=g; x.fillRect(0,0,c.width,c.height);
+  const wo=parseFloat(cs.getPropertyValue('--wo'))||0;
+  if(wo>0){ const g2=x.createLinearGradient(0,0,0,c.height); g2.addColorStop(0,cs.getPropertyValue('--w1').trim()); g2.addColorStop(.8,cs.getPropertyValue('--w2').trim()); g2.addColorStop(1,cs.getPropertyValue('--w2').trim());
+    x.globalAlpha=wo; x.fillStyle=g2; x.fillRect(0,0,c.width,c.height); x.globalAlpha=1; }
+  x.drawImage(canvas,0,0);
+  download(c.toDataURL('image/png'),qT===1?'二维码视角.png':`${shapeName(treeKey)}.png`); });
+
+boot();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+      <details class="opt" name="opt">
+        <summary><span class="opt-k">样式</span><span class="opt-v" id="vStyle"></span></summary>
+        <div class="opt-body">
+          <p class="sub" id="lbEcc">纠错等级</p>
+          <div class="chips" id="eccChips" role="radiogroup" aria-labelledby="lbEcc"></div>
+          <p class="sub" id="lbHole">中心留白</p>
+          <div class="chips" id="holeChips" role="radiogroup" aria-labelledby="lbHole"></div>
+          <p class="note" id="eccNote">纠错越高越脏不坏，代价是同样内容的码会变大（格子更密）。想贴 logo 或做中心留白就用 Q 或 H。</p>
+          <div class="mini" style="margin-top:12px">
+            <div class="fh"><label for="exportSize">导出尺寸</label>
+              <select id="exportSize">
+                <option value="640">640 × 640</option>
+                <option value="1024" selected>1024 × 1024</option>
+                <option value="1536">1536 × 1536</option>
+                <option value="2048">2048 × 2048</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="opt" name="opt">
+        <summary><span class="opt-k">识码</span><span class="opt-v">读出别的二维码里写了什么</span></summary>
+        <div class="opt-body">
+          <label class="drop" id="drop" for="qrfile">
+            <strong>拖进来、Ctrl+V 粘贴，或点这里选一张截图</strong>
+            <span>支持 PNG / JPG，微信名片、收款码、别人做的码都能读</span>
+          </label>
+          <input type="file" id="qrfile" accept="image/*" hidden>
+          <p class="note" id="scanNote">读到的原始内容会直接填进上面的输入框，然后随手换成你自己的风格重画一遍。需要 Chrome 或 Edge（用到浏览器内置的识别引擎）。</p>
+        </div>
+      </details>
