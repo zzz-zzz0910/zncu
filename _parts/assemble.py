@@ -113,16 +113,22 @@ s = rep(s,
         "  if(!glOK){ if(curQR) drawFlat(); return; }\n"
         "  recolor(); initSeasonFX(); updateStatus();",
         "  if(k===seasonKey) return; seasonKey=k; markChips('seasonChips',k); stage.dataset.season=k;\n"
-        "  if(outMode==='show'){ applyNow(); return; }\n"
+        "  if(outMode==='show'){ if(glOK){ initSeasonFX(); initWeatherFX(); } applyNow(); return; }\n"
         "  if(!glOK){ if(curQR) drawFlat(); syncHash(); return; }\n"
         "  recolor(); initSeasonFX(); syncHash(); updateStatus();",
         'setSeason')
 s = rep(s,
         "  if(glOK){ initWeatherFX(); if(wasNight||k==='night') recolor(); } updateStatus();",
-        "  if(outMode==='show'){ applyNow(); return; }\n"
+        "  if(outMode==='show'){ if(glOK) initWeatherFX(); applyNow(); return; }\n"
         "  if(glOK){ initWeatherFX(); if(wasNight||k==='night') recolor(); }\n"
         "  syncHash(); updateStatus();",
         'setWeather')
+
+# 8a. 松树：最底层枝叶原来从 y=2.2 就张开，把整根树干包住了，抬高到 3.5 让树干露出来
+s = rep(s,
+        "for(let t=0;t<6;t++){ const yb=2.2+t*2.25, h=3-t*.12, R=5.3-t*.78",
+        "for(let t=0;t<6;t++){ const yb=3.5+t*2.2, h=3-t*.12, R=5.3-t*.78",
+        'pineTrunk')
 
 # 8b. 地标越高，云就抬得越高，免得云从广州塔中间穿过去
 s = rep(s,

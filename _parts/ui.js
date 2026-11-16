@@ -608,7 +608,7 @@ function boot(){
     rebuild('all');
     if(glOK){ setMode('tree'); requestAnimationFrame(frame); }
     else { $('toggle').hidden=true; hint.hidden=true; updateStatus(); }
-    buildShowcase();
+    buildShowcase(); bindKeys();
     return;
   }
   readHash();

@@ -544,7 +544,7 @@ const SHAPES={
   pine:{ b:[-6.5,6.5,18.5,-6.5,6.5], f(){ // 松树：六层边缘下垂的锥形枝叶，层层收小，顶上一个尖
     const caps=[[[0,0,0],[0,15.6,0],.75,.18],...ROOTS(.8)];
     return (x,y,z)=>{ const d=Math.hypot(x,z), n=noise3(x*1.4,y*1.4,z*1.4);
-      for(let t=0;t<6;t++){ const yb=2.2+t*2.25, h=3-t*.12, R=5.3-t*.78, ybe=yb-.8*Math.pow(Math.min(1,d/R),2), s=(y-ybe)/h;
+      for(let t=0;t<6;t++){ const yb=3.5+t*2.2, h=3-t*.12, R=5.3-t*.78, ybe=yb-.8*Math.pow(Math.min(1,d/R),2), s=(y-ybe)/h;
         if(s>=0&&s<=1&&d<=R*Math.pow(1-s,1.05)*(.88+n*.24)) return ['leaf',null,s>.55?0:s>.22?1:2]; }
       if(y>=15.4&&y<=17.8&&d<=.8*(1-(y-15.4)/2.4)+.22) return ['leaf',null,0];
       return inCaps(x,y,z,caps)?['trunk']:null; }; } },
@@ -1088,7 +1088,7 @@ const markChips=(id,key)=>{ for(const b of $(id).children) b.setAttribute('aria-
 function setTree(k){ if(k===treeKey) return; treeKey=k; markChips('treeChips',k); markChips('landChips',k); if(outMode==='show'){ const nu=currentShowUrl(); if(nu) curText=nu; } rebuild(qT===0?'tree':'none'); syncHash(); }
 function setSeason(k){
   if(k===seasonKey) return; seasonKey=k; markChips('seasonChips',k); stage.dataset.season=k;
-  if(outMode==='show'){ applyNow(); return; }
+  if(outMode==='show'){ if(glOK){ initSeasonFX(); initWeatherFX(); } applyNow(); return; }
   if(!glOK){ if(curQR) drawFlat(); syncHash(); return; }
   recolor(); initSeasonFX(); syncHash(); updateStatus();
 }
@@ -1098,7 +1098,7 @@ function recolor(){ // 颜色平滑过渡到新的季节/天气配色
 }
 function setWeather(k){
   if(k===weatherKey) return; const wasNight=weatherKey==='night'; weatherKey=k; markChips('weatherChips',k); stage.dataset.weather=k;
-  if(outMode==='show'){ applyNow(); return; }
+  if(outMode==='show'){ if(glOK) initWeatherFX(); applyNow(); return; }
   if(glOK){ initWeatherFX(); if(wasNight||k==='night') recolor(); }
   syncHash(); updateStatus();
 }
@@ -2139,7 +2139,7 @@ function boot(){
     rebuild('all');
     if(glOK){ setMode('tree'); requestAnimationFrame(frame); }
     else { $('toggle').hidden=true; hint.hidden=true; updateStatus(); }
-    buildShowcase();
+    buildShowcase(); bindKeys();
     return;
   }
   readHash();
