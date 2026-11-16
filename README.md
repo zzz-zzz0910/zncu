@@ -275,6 +275,9 @@ qr-island/
    └─ render_check.py  渲染成 PNG 用 zbar 实扫
 ```
 
+> `uitest.mjs` / `uitest2.mjs` 需要先在 8788 端口起本地服务、9222 开调试端口；
+> `uitest2.mjs` 还要一张测试图，跑之前先 `python -c "import segno; segno.make('愿你今天也被温柔以待', error='m').save('_parts/test-qr.png', scale=10, border=4)"`。
+
 改代码的正确姿势：改 `_parts/` 里的片段，再跑 `python _parts/assemble.py` 重新拼。直接改 `index.html` 的话，下次拼装会被覆盖。
 
 ---
